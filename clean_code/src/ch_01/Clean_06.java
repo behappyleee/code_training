@@ -1,5 +1,8 @@
 package ch_01;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Clean_06 {
 
 	// 변수 선언 --> 변수는 사용하는 위치에 최대한 가까이 선언 
@@ -16,5 +19,9 @@ public class Clean_06 {
 	// 일반적으로 함수 호출 종속성은 아래 방향으로 유지 다시 말해, 호출되는 함수를 호출하는 함수보다 나중에 배치
 	
 	// 좋은 소프트웨어 시스템은 읽시 쉬운 문서로 이루어진다. 스타일은 일관적이며 매끄러워야 한다.
+	
+	List<String> a = new ArrayList<>();
+	
+	
 	
 }
