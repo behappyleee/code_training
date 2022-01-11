@@ -11,6 +11,7 @@ public class Clean_02 {
 			int O = 5;
 		
 			// 대문자 O 는 숫자 0 처럼 보인다.
+			// 헷갈리지 않게 주의하기
 			if( O == 1) {
 				System.out.println("대문자 O !!");
 			}
