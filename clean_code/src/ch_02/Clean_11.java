@@ -16,7 +16,7 @@ public class Clean_11 {
 		System.out.println("Hello World !");
 	
 		Thread a = new Thread();
-		
+			
 		
 		
 	}

@@ -19,5 +19,16 @@ public class Clean_08 {
 	// DSL은 간단한 스크립트 언어나 표준 언어로 구현한 API
 	// 좋은 DSL 은 도메인 개념과 그 개념을 구현한 코드 사이에 존재하는 의사소통 간극을 줄여준다.
 	
+	public static void main(String[] args) {
+		System.out.println( "Property : " + System.getProperty("java.vm.specification.vendor") );
+		System.out.println("Get Proprty : " + System.getProperties()   );
+		System.getLogger("Hello");
+		System.out.println(System.getenv()); // System.getenv(null);
+	
+	}
+	
+	
+	
 	
 }
+
