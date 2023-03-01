@@ -19,6 +19,23 @@ public class Test {
 		args[0] = "Hello Method !";
 		args[1] = "Hello SecondArgs !";
 		testMain.main(args);
+		
+		int i = 0;
+		int sum2 = 0;
+		
+		/*
+		 * while(i < 10) { i++; if(i % 2 == 1) continue; sum2 += i; }
+		 */
+		
+		
+		for(i=0; i<10; i++) {
+			if(i%2 == 1) continue;
+			sum2 +=i;
+		}
+		
+		System.out.println("i Num : " + sum2);
+		
+		
 	}
 }
 
