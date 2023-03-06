@@ -67,7 +67,6 @@ public class ExceptionTest {
 	}
 	
 	public static void main(String[] args) {
-		
 		// 예외 처리 구문을 추가하여 예외가 발생하더라도 비정상적으로 종료되지 않도록 구현이 가능
 		// withException();
 		
