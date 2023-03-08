@@ -36,9 +36,10 @@ interface Eatable {
 
 // Fruit 으로 제네릭 타입을 제한 하면서 Eatable 인터페이스를 구현 필요시에는  & 로 묶어줄 수 있다.
 class InterfaceClassGeneric <T extends Fruit & Eatable> {
+		
+	
 	
 }
-
 
 // Fruit 과 상속 관계인 타입만 지정할 수 있도록 제한 이 가능하다
 // 제네릭 타입 제한을 원할 시 클래스나 인터페이스도 가능하며 둘다 extends 키워드를 사용하여 제네릭 타입 지정 제한이 가능하다.
