@@ -30,6 +30,7 @@ public class ThreadStratRun {
 		System.out.println(Thread.currentThread().getName());
 		System.out.println(Thread.activeCount());
 		
+		
 	}
 	
 }
