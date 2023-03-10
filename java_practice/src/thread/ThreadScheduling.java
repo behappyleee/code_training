@@ -15,3 +15,14 @@ public class ThreadScheduling {
 	
 	
 }
+
+
+class ThereadSleepTest {
+	public void delay(long millis) {
+		try {
+			Thread.sleep(10000);
+		} catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+}
