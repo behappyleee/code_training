@@ -1,5 +1,9 @@
 package stream;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.util.Arrays;
+
 public class ReaderWriterStream {
 	
 	// 문자 기반 스트림 
@@ -21,10 +25,30 @@ public class ReaderWriterStream {
 		// StringBufferInputStream	/	StringReader
 		// StringBufferOutputStream	/ 	StringWriter
 		
-		// 문자기반 스트림의 이름은 Byte 기반 스트림의 이름에서 InputStream 은 Reader 로 OutputStream 은 Wrtier 로 이름만 바꾸어 주면 된다.
+		// 프로그램이 종료될 때 사용하고 닫지 않은 스트림을 JVM 이 자동으로 닫아주기는 하지만 스트림을 사용하여
+		// 모든 작업을 마치고 난 후에는 반드시 close() 를 호출하여 닫아준다.
 		
-		// TODO 874 page (Byte 기반 Stream) 학습 하기 !!!!!
+		byte[] inSrc = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+		byte[] outSrc = null;
 		
+		// Stream 종류마다 사용법은 비슷하니 다음 예제를 통하여 사용법을 익힘
+		ByteArrayInputStream input = null;
+		ByteArrayOutputStream output = null;
+		
+		input = new ByteArrayInputStream(inSrc);
+		output = new ByteArrayOutputStream();
+		
+		int data = 0;
+		
+		// loop 를 돌면서 byte 를 읽음
+		while((data = input.read()) != -1) {	// read() 를 호출한 반환값을 변수 data 에 저장 괄호 먼저 실행, data 에 저장 된 값이 -1 이랑 비겨
+			output.write(data);		
+		}
+		
+		outSrc = output.toByteArray();
+		
+		System.out.println("INPUT SRC : " + Arrays.toString(inSrc));
+		System.out.println("OUTPUT SRC : " + Arrays.toString(outSrc));
 		
 	}
 	
