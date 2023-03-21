@@ -18,11 +18,6 @@ public class SerializeTest {
 		// 객체 역직렬화 ObjectOutputStream
 		
 		
-		
-		
-		
 	}
-	
-	
 	
 }
