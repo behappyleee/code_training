@@ -2,7 +2,9 @@ package lambda;
 
 public class FunctionalInterfaceTest {
 	
-	// 함수형 인터페이스
+	// 함수형 인터페이스 MyFunction 을 정의
+	// FunctionalInterface 어노테이션을 붙이면 컴파일러가 함수형 인터페이스를 
+	@FunctionalInterface
 	interface MyFunction {
 		public abstract int max(int a, int b);
 	}
@@ -22,15 +24,8 @@ public class FunctionalInterfaceTest {
 			return (a > b ? a : b);
 		};
 		
-		// 익명 객체를 람다식으로 대체가 가능한 이유는 람다식도 실제로는 익명 객체이고, MyFunction 인터페이스를 구현한 익명
-		// 객체의 
-		
-		
-		
-		
 		
 	}
-	
 	
 	
 }
