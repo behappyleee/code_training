@@ -25,6 +25,16 @@ public class FunctionalInterfaceTest {
 		};
 		
 		
+//		MyFunction mf = () -> {
+//			System.out.println("MyFunction Lambda Test")
+//		};
+		
+		// 람다식을 참조변수로 다룰 수 있다는 것은 메서드를 통해 람다식을 주고받을 수 있다는 것을 의미
+		// 즉 변수 처럼 메서드를 주고 받을 수 있다는 것을 의미
+		// 사실상 메서드가 아닌 객체를 주고 받는 것이므로 근본적으로 달라진 것은 아무것도 없다.
+		// 람다식 덕분에 예전보다 코드가 더 간결하고 이해하기 더 쉬워졌다.
+		
+		
 	}
 	
 	
