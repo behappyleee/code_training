@@ -19,14 +19,14 @@ public class LambdaMethodTest {
 		return mf;
 	}
 	
-	
 	public static void main(String[] args) {
+		getMyFunction().run();
+		
 		// 람다식으로 MyFunctionInterface 의 run 을 구현
 		MyFunctionInterface mf1 = () ->  System.out.println("Test Mf1 Run !");
 		
 		MyFunctionInterface mf2 = () -> new MyFunctionInterface() {
 			@Override
-			
 			public void run() {	// public 을 반드시 붙여야 함
 				System.out.println("tEST Mf2 Run !");
 			}
@@ -40,7 +40,7 @@ public class LambdaMethodTest {
 		
 		execute(mf1);
 		execute(() -> System.out.println("Direct Function !!!"));
-	
+		
 	}
 	
 }
