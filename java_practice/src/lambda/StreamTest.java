@@ -3,6 +3,7 @@ package lambda;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StreamTest {
@@ -70,7 +71,21 @@ public class StreamTest {
 						.mapToInt(s -> s.length())
 						.sum();
 		
-		// TODO 스트림 만들기 부터 학습 하기 !!!
+		// 병렬 스트림은 내부적으로 이 프레임워크를 이용해서 자동적으로 연산을 병렬로 수행
+		// 컬렉션에 최고 Collection 에 stream() 이 저장 되어 있음
+		// 
+		
+		List<Integer> listTest = Arrays.asList(1,2,3,4,5,6,7,8);
+		Stream<Integer> intStream = listTest.stream();	// list 를 소스로 하는 컬렉션 생성
+		
+		// forEach 는 한번 사용할 시 Stream 을 재사용하고 싶을 시 다시 생성하여 사용을 하여야 한다.
+		listTest.forEach(System.out::println);	// 스트림의 모든 요소를 출력
+		intStream.forEach(System.out::println);
+		
+		IntStream intStreamTest = IntStream.range(1, 5);				// 1,2,3,4
+		IntStream intStreamClosedTest = IntStream.rangeClosed(1, 5);	// 1,2,3,4,5
+		
+		intStreamTest.limit(3).forEach(System.out::println);	// 3개 요소만 출력
 		
 		
 		
