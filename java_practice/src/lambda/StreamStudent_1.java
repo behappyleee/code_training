@@ -8,22 +8,66 @@ public class StreamStudent_1 {
 	public static void main(String[] args) {
 		
 		Stream<Student> studentStream = Stream.of(
-				new Student("���ڹ�", 3, 300),
-				new Student("���ڹ�", 1, 200),
-				new Student("���ڹ�", 2, 100),
-				new Student("���ڹ�", 2, 150),
-				new Student("���ڹ�", 1, 200),
-				new Student("���ڹ�", 3, 290),
-				new Student("���ڹ�", 3, 180)
+				new Student("이자바", 3, 300),
+				new Student("김자바", 1, 200),
+				new Student("안자바", 2, 100),
+				new Student("박자바", 2, 150),
+				new Student("소자바", 1, 200),
+				new Student("나자바", 3, 290),
+				new Student("감자바", 3, 180)
 				);
 		
-		studentStream.sorted(Comparator.comparing(Student::getBan)		// �ݺ� ����
-				.thenComparing(Comparator.naturalOrder()))				// �⺻ ����
+		studentStream.sorted(Comparator.comparing(Student::getBan)		// 반변 정렬
+				.thenComparing(Comparator.naturalOrder()))				// 기본 정렬
 				.forEach(System.out::println);
 		
+		File[] fileArr = {new File("Ex1.java"), new File("Ex2.java"), new File("Ex3.java"), new File("Ex4.java")
+						, new File("Ex5.java"), new File("Ex6.java"), new File("Test.txt")
+		};
+		
+		Stream<File> fileStream = Stream.of(fileArr);
+		
+		Stream<String> fileNameStream = fileStream.map(File::getFileName);	
+		fileNameStream.forEach(System.out::println);	// 모든 파일 이름을 출력
+		
+		fileStream = Stream.of(fileArr);	// 스트림을 다시 생성 Stream 을 다시 생성 하지 않으면 ERROR 발생
+		
+		// map() --> 스트림의 요소에 저장 된 값 중에 원하는 필드만 뽑아내거나 특정 형태로 변환해야 할 떄가 있다.
+		fileStream.map(File::getFileName)
+				.filter(s -> s.indexOf('.') != -1)
+				.map(s -> s.substring(s.indexOf('.')+1))	// 확장자만 추출
+				.map(String::toUpperCase)	// 모두 대문자로 변환
+				.distinct()
+				.forEach(System.out::println);	// 모두 출력
+		
+		System.out.println();
+		
+		// peek() --> 연산과 연산 사이에 올바르게 처리되었는 지 확인하고 싶다면 peek() 을 사용
+		
+		
+		
+	
 	}
 	
 }
+
+class File {
+	
+	String fileName;
+	
+	File(String fileName) {
+		this.fileName = fileName;
+	}
+	
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	
+	public String getFileName() {
+		return this.fileName;
+	}
+}
+
 
 class Student implements Comparable<Student>{
 	String name;
@@ -52,7 +96,7 @@ class Student implements Comparable<Student>{
 		return totalScore;
 	}
 	
-	// ���� ���� ������ �⺻ ���ķ� ��
+	// 총점 내림 차순을 기본 정렬로 함
 	public int compareTo(Student s) {
 		return s.totalScore - this.totalScore;
 	}
