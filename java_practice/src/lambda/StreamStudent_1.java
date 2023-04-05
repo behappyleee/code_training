@@ -1,6 +1,9 @@
 package lambda;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StreamStudent_1 {
@@ -45,11 +48,55 @@ public class StreamStudent_1 {
 		// peek() --> 연산과 연산 사이에 올바르게 처리되었는 지 확인하고 싶다면 peek() 을 사용
 		
 		
+		int[] numTest = {1,2,5,8,3,6,9,11,14,17};
+		ArrayList<Integer> numList = new ArrayList<>();
+		numList.add(3);
+		numList.add(7);
+		numList.add(5);
+		numList.add(9);
+		numList.add(13);
+		numList.add(15);
+		
+		// Stream<ArrayList<Integer>> intStream = Stream.of(numList);
+		
+		IntStream intStream = IntStream.range(3, 23);
+		intStream.forEach(System.out::println);
+		
+		intStream = IntStream.range(3, 23);
+		intStream.map(s -> s + 5);
+		
+		System.out.println("INT STREAM TEST :  " + intStream);
+		
+		Stream<TestClassLambda> testLambda = Stream.of(new TestClassLambda(3), new TestClassLambda(5)
+				, new TestClassLambda(7), new TestClassLambda(9), new TestClassLambda(1)
+				, new TestClassLambda(2), new TestClassLambda(6), new TestClassLambda(12)
+				);
+		
+		
 		
 	
 	}
 	
 }
+
+class TestClassLambda {
+	
+	int testNum;
+	
+	TestClassLambda(int testNum) {
+		this.testNum = testNum;
+	}
+	
+	public void setTestNum(int testNum) {
+		this.testNum = testNum;
+	}
+	
+	public int getTestNum() {
+		return this.testNum;
+	}
+}
+
+
 
 class File {
 	
