@@ -26,8 +26,7 @@ public class StreamTest {
 			// 코드 상으로는 보조 스트림은 BufferedInputStream 이 입력 기능을 수행하는 것 처럼 보이지만, 실제 입력 기능은 BufferedInputStream 과
 			// 연결 된 FileInputStream 이 수행을 하고 보조 스트림은 BufferedInputStream 은 Buffer 만을 제공 한다. Buffer 를 사용한
 			// 입출력과 사용 하지 않은 입출력 간의 성능차이는 상당하기 때문에 대부분의 경우에 버퍼를 이용하여 입출력을 사용한다.
-			
-			
+
 			// 1. File 을 읽기 위하여 먼저 기반 FileInputStream 을 생성
 			FileInputStream fis = new FileInputStream("test.txt");
 			
@@ -36,11 +35,7 @@ public class StreamTest {
 			
 			// 3. 보조 스트림은 BufferedInputStream 으로 부터 데이터를 읽음
 			bis.read();	
-			
-			
-			
-			
-		
+
 		} catch(IOException e) {
 			e.printStackTrace();
 		}

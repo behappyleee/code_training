@@ -53,6 +53,9 @@ public class StreamPractice {
 		IntStream strIntStream = IntStream.of(1, 7, 3, 5, 11, 14, 16);
 		strIntStream.distinct();	// 중복 값을 제거
 		
+		IntStream strIntStream2 = IntStream.of(1, 7, 3, 5, 11, 14, 16);
+		strIntStream2.peek(System.out::println);
+		
 		
 		LambdaEx le = new LambdaEx();
 		le.hi(new Say() {
