@@ -9,7 +9,7 @@
 <body>
 
 
-  <div class="keys">
+  <!-- <div class="keys">
     <div data-key="65" class="key">
       <kbd>A</kbd>
       <span class="sound">clap</span>
@@ -46,6 +46,45 @@
       <kbd>L</kbd>
       <span class="sound">tink</span>
     </div>
+  </div> -->
+
+  <div class="keys">
+    <div data-key="A" class="key">
+      <kbd>A</kbd>
+      <span class="sound">clap</span>
+    </div>
+    <div data-key="S" class="key">
+      <kbd>S</kbd>
+      <span class="sound">hihat</span>
+    </div>
+    <div data-key="D" class="key">
+      <kbd>D</kbd>
+      <span class="sound">kick</span>
+    </div>
+    <div data-key="F" class="key">
+      <kbd>F</kbd>
+      <span class="sound">openhat</span>
+    </div>
+    <div data-key="G" class="key">
+      <kbd>G</kbd>
+      <span class="sound">boom</span>
+    </div>
+    <div data-key="H" class="key">
+      <kbd>H</kbd>
+      <span class="sound">ride</span>
+    </div>
+    <div data-key="J" class="key">
+      <kbd>J</kbd>
+      <span class="sound">snare</span>
+    </div>
+    <div data-key="K" class="key">
+      <kbd>K</kbd>
+      <span class="sound">tom</span>
+    </div>
+    <div data-key="L" class="key">
+      <kbd>L</kbd>
+      <span class="sound">tink</span>
+    </div>
   </div>
 
   <audio data-key="65" src="sounds/clap.wav"></audio>
@@ -56,9 +95,51 @@
   <audio data-key="72" src="sounds/ride.wav"></audio>
   <audio data-key="74" src="sounds/snare.wav"></audio>
   <audio data-key="75" src="sounds/tom.wav"></audio>
-  <audio data-key="76" src="sounds/tink.wav"></audio>
+  <audio data-key="76" src="sounds/tink.wav"></audio> 
+
+  <!-- 
+  <audio data-key="A" src="sounds/clap.wav"></audio>
+  <audio data-key="S" src="sounds/hihat.wav"></audio>
+  <audio data-key="D" src="sounds/kick.wav"></audio>
+  <audio data-key="F" src="sounds/openhat.wav"></audio>
+  <audio data-key="G" src="sounds/boom.wav"></audio>
+  <audio data-key="H" src="sounds/ride.wav"></audio>
+  <audio data-key="J" src="sounds/snare.wav"></audio>
+  <audio data-key="K" src="sounds/tom.wav"></audio>
+  <audio data-key="L" src="sounds/tink.wav"></audio> 
+-->
 
 <script>
+    // KEY PAD 를 클릭 시 해당 알파벳에 맞는 Sound 재생
+    // Audio 실행
+    function playSound(e) {
+      // ASCII 코드로 Input 받음
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+      const key = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+
+      let inputKey = e.key;
+      // 영어 스펠링으로 Input 받음
+      // const audio = document.querySelector(`audio[data-key="${e.key}"]`);
+      // const key = document.querySelector(`audio[data-key="${e.key}"]`);
+      if(!audio) {
+        alert('다른 키를 눌러 주세요 !');
+        return false;
+      }
+
+      key.classList.add('playing');
+      audio.currentTime = 0;
+      audio.play();
+    } 
+    // Audio 중지
+    function removeTransition(e) {
+      console.log('REMOVE TRANSITION DATA ', e);
+      if(e.propertyName !== 'transform') return;
+      e.traget.classList.remove('playing');
+    }
+
+    const soundKeyArray = Array.from(document.querySelectorAll('key'));
+    // soundKeyArray.forEach(key => key.addEventListener('transitionend'), removeTransition);
+    window.addEventListener('keydown', playSound);
 
 </script>
 
