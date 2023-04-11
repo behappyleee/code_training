@@ -38,16 +38,62 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    // My Write Answer
+    // Filter Method 사용 시 중괄호 사용 안할 시 return 생략 가능 그냥 괄호만 사용
+    // const bornFilteredData = inventors.filter((inventor) => {return (inventor.year >= 1500 && inventor.year < 1600)});
+    const bornFilteredData = inventors.filter(inventor => (inventor.year >= 1500 && inventor.year < 1600));
+    console.log(bornFilteredData);
+
+    // Answer
+    const fifteen = inventors.filter(inventor => (inventor.year >= 1500 && inventor.year < 1600));
+    console.table(fifteen);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    // My Write Answer
+    const firstAndLastNameArray = inventors.map(inventor => {
+        var nameObject = {
+          first : inventor.first,
+          last : inventor.last, 
+        }
+        return nameObject;
+    });
+
+    console.log('firstAndLastNameArray Array : ' + JSON.stringify(firstAndLastNameArray));
+
+    // Answer
+    const fullNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+    console.log(fullNames);  
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    // Sort 는 값을 정렬 할 떄 사용 하며 비교 값이 1 이면 뒤로 이동 -1 이면 앞으로 이동 0 이면 제자리 이다. 
+    // ex) a > b 이면 a 가 b 뒤로 이동 a < b 이면 a 가 b 뒤로 이동 
+    // My Write Answer
+    const filteredSortByBirthDay = inventors.sort(function compare (a, b) {
+      return a.year - b.year;
+    });
+    console.log('FILTERED SORT BY BIRTHDATE : ' + JSON.stringify(filteredSortByBirthDay));
 
+    // First Answer
+    const ordered = inventors.sort((a, b) => a.year > b.year ? 1 : -1);
+    console.table(ordered);
+    // SecondAnswer
+    const ordered_second = inventors.sort(function(a, b) {
+      if(a.year > b.year) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+
+    // TODO
+    // 4 번 부터 하기 !!
+
+    
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
-
+    
     // 5. Sort the inventors by years lived
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name

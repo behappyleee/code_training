@@ -10,7 +10,7 @@
 
   <div class="controls">
     <label for="spacing">Spacing:</label>
-    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px" data-test="test">
 
     <label for="blur">Blur:</label>
     <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
@@ -22,6 +22,21 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    :root {
+      --base: #ffc600;
+      --spacing: 10px;
+      --blur: 10px;
+    }
+
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+
+    .hl {
+      color: var(--base);
+    }
 
     /*
       misc styles, nothing to do with CSS variables
@@ -46,23 +61,24 @@
   </style>
   
   <script>
+    // window 객체인 addEventListen 를 사용하여 변화가 있을 떄 마다 CSS 를 Update 를 해 줌
     const inputs = document.querySelectorAll('.controls input');  
 
     function handleUpdate() {
-
-      console.log('this check ', this);
-
+      // JavaScript 는 dataset 속성들을 따로 모아서 관리를 함
+      // data-이름 붙은 것을 dataset.이름 으로 설정 데이터를 가져옴
       const suffix = this.dataset.sizing || '';
-      
-      console.log('CONTEXT SUFFIX DATA CHECK : ' + suffix);
-      
+
+      // 위 HTML Tag 에서는 data-test 속성명으로 선언 값을 가져올때는 this.dataset.test 명으로 Tag 설정 된 데이터를 가져옴
+      const dataSetTest = this.dataset.test;  
+
+      console.log('data set test : ' + dataSetTest);
 
       document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
     }
 
     inputs.forEach(input => input.addEventListener('change', handleUpdate));
     inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
-
 
   </script>
 
