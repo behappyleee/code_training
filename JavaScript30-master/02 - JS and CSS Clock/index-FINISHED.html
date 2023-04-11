@@ -6,17 +6,16 @@
   <link rel="icon" href="https://fav.farm/✅" />
 </head>
 <body>
-
-
     <div class="clock">
+      <button onclick=startWatch()>시작</button>
+      <button onclick=stopWatch()>멈춤</button>
+
       <div class="clock-face">
         <div class="hand hour-hand"></div>
         <div class="hand min-hand"></div>
         <div class="hand second-hand"></div>
       </div>
     </div>
-
-
   <style>
     html {
       background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
@@ -74,7 +73,7 @@
   const secondHand = document.querySelector('.second-hand');
   const minsHand = document.querySelector('.min-hand');
   const hourHand = document.querySelector('.hour-hand');
-
+  let watchIntervalId;
   function setDate() {
     const now = new Date();
 
@@ -91,10 +90,18 @@
     hourHand.style.transform = `rotate(${hourDegrees}deg)`;
   }
 
-  setInterval(setDate, 1000);
-
+  watchIntervalId = setInterval(setDate, 1000);
   setDate();
 
+  function startWatch() {
+    watchIntervalId = setInterval(setDate, 1000);
+  }
+
+  function stopWatch() {
+    clearTimeout(watchIntervalId);
+  }
+
 </script>
+
 </body>
 </html>
