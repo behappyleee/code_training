@@ -86,26 +86,94 @@
         return -1;
       }
     });
-
-    // TODO
-    // 4 번 부터 하기 !!
-
     
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
     
+    // Reduce 는 함수의 배열을 한번씩 돌면서 이전 콜백의 리턴 값을 넘겨 받아 작업을 수행하는 메서드
+    // Answer
+    const liveAllYears = inventors.reduce((total, inventor, index) => {
+        return total + (inventor.passed - inventor.year);
+    }, 0)
+
+    console.log('INVENTORS LIVE ALL : ' + liveAllYears);
+
     // 5. Sort the inventors by years lived
+    
+    // My Answer
+    // sort a 가 전 요소 b 가 후 요소
+    const sortInventorsByYearsLived = inventors.sort((a,b) => {
+      return (a.passed - a.year) > (b.passed - b.year);
+    });
+
+    // Computer Answer
+    const sortInventorsByYearsLivedAnswer = inventors.sort((a, b) => {
+      const lastInventors = a.passed - a.year;
+      const nextInventors = b.passed - b.year;
+      return (lastInventors > nextInventors) ? -1 : 1;
+    })
+
+    console.log('SORT INVENTORS BY YEARS LIVED : ' + JSON.stringify(sortInventorsByYearsLived));
+    console.log('SORT INVENTORS BY COMPUTER YEARS LIVED : ' + JSON.stringify(sortInventorsByYearsLivedAnswer));
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    
+    
+    // MyAnser 
+    // CORS 로 불가
+    // var http = new XMLHttpRequest();
+    // var targetUrl = "https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris";
+    // http.open('GET', targetUrl);
+    // http.send();
+    // http.onreadystatechange = (e) => {
+    //   console.log('e: ', e);
+    // }
 
+    // ANSWER
+    // const category = document.querySelector('.my-category');
+    // const links = Array.from(category.querySelectorAll('a')); 
+    // const de = links
+    //         .map(link => link.textContent)
+    //         .filter(streetName => streetName.includes('de'));
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    
+    // My Answer
+    const sortByLastName = inventors.sort((a, b) => {
+      // a 가 b 보다 앞서면 b 가 a 앞으로 옴 
+      return a.lastName > b.lastName;
+    })
+
+    // Answer
+    const alphaSort = people.sort((lastOne, nextOne) => {
+      const [aLast, aFirst] = lastOne.split(', ');
+      const [bLast, bFirst] = nextOne.split(', ');
+      return aLast > bLast ? 1 : -1;
+    })
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    
+    // My Answer
+    const dataSum = data.reduce((total, eachData, index) => {
+      return (total + eachData);
+    })
+
+    console.log('REDUCE EXCERSICE DATA SUM : ' + JSON.stringify(dataSum));
+
+    // Computer Answer
+    const transportation = data.reduce(function(obj, item) {
+      if(!obj[item]) {
+        obj[item] = 0;
+      }
+      obj[item]++;
+      return obj;
+    }, {})
+
+    console.log('COMPUTER DATA TRANSPORTATION : ' + JSON.stringify(transportation));
 
   </script>
 </body>
