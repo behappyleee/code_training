@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloClass {
-
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping("/test")
