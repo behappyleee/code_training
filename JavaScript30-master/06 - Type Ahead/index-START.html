@@ -15,8 +15,65 @@
       <li>or a state</li>
     </ul>
   </form>
+
 <script>
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+  const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+  const http = new XMLHttpRequest();
+  let cityData = new Array();
+
+  http.open("GET", endpoint); // GET 으로 데이터 받을 주소 지정
+  http.send();  // request 함
+  
+  http.onreadystatechange = function () {
+    if(http.readyState == XMLHttpRequest.DONE) { // request 가 완료 됐을 때
+      if(http.status == 200){ // 성공
+          cityData = Array.from(JSON.parse(http.responseText));
+          } else  {   // 실패
+            alert('DATA 를 가져오는데 실패하였습니다 !');
+            console.log('HTTP STATUS FAIL DATA : ' + JSON.stringify(http));
+        }
+    }
+  }
+
+  const inputSearch = document.querySelector('.search');
+
+  // 함수 선언식은 호이스팅 안되므로 사용 하는 곳보다 무조건 앞에 선언
+  const filterInputCity = (e) => {
+    let inputCityValue = e.target.value;
+    if(!cityData) {
+      alert('잠시만 기다려 주세요 !');
+    }
+
+    let filteredCityData = cityData.filter((city) => {
+      let cityName = city.city;
+      let cityState = city.state;
+      return (cityName.startsWith(inputCityValue) || cityState.startsWith(inputCityValue));
+    }); 
+    showDataArray(filteredCityData);
+  }
+
+  const showDataArray = (arrayData) => {
+    let suggestionSelector = document.querySelector('.suggestions');
+    let arrayHtmlData = makeArrayHtml(arrayData);
+
+    console.log('TYPE OF SUGGENSTIONS QUERY SELECTOR TYPE : ' + suggestionSelector);
+
+    suggestionSelector.innerHTML = arrayHtmlData;
+  }
+
+  const makeArrayHtml = (arrayHtml) => {
+    let innerHtml = '';
+    arrayHtml.map((eachArrayData) => {
+      innerHtml += '<li>';
+      innerHtml +=  eachArrayData.city + ',' + eachArrayData.state + eachArrayData.population;
+      innerHtml += '</li>';  
+    })
+    return innerHtml;
+  }
+
+  inputSearch.addEventListener('input', filterInputCity);
+
+  console.log('end point data : ' + JSON.stringify(endpoint));
 
 </script>
 </body>
