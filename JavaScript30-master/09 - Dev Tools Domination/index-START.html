@@ -7,7 +7,7 @@
 </head>
 <body>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+  <p onClick="makeGreen()" class="classTest">×BREAK×DOWN×</p>
 
   <script>
     const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
@@ -19,29 +19,80 @@
     }
 
     // Regular
+    // 보통 CONSOLE.LOG !
+    console.log('hello world !');
 
-    // Interpolated
+    // Interpolated 
+    // conosle.log 중 데이터를 중간에 넣음 %s 를 사용
+    console.log('Hello I am a %s string!', '💩');
 
     // Styled
+    // console.log() 에 style 을 입힘 !
+    console.log('%c I am some great text', 'font-size:50px; background:red; text-shadow: 10px 10px 0 blue')
 
     // warning!
+    console.warn('This is Console Log WARNING !');
 
     // Error :|
+    console.error('This is Console Log ERROR !');
 
     // Info
+    console.info('This is Console Log INFO !');
+
 
     // Testing
+    // assert 를 사용하여 해당 요소가 포함 되어 있는지 확인 !
+    const pSelector = document.querySelector('p');
+    console.assert(pSelector.classList.contains('ouch'), 'That is wrong!');
 
+    // console.clear() 를 사용 시 모든 cosole log 들을 지워버림
     // clearing
+    console.clear();
 
     // Viewing DOM Elements
+    console.log(pSelector); // 그냥 console.log 로 찍을 시 해당 tag 들이 그대로 보임
+    console.dir(pSelector); // console.dir 은 해당 태그가 속한 attribute 를 모두 볼 수 있음
 
     // Grouping together
+    dogs.forEach((dog) => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is Dog Name : ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    })
 
     // counting
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Steve');
+    console.count('Steve');
+    console.count('Wes');
+    console.count('Steve');
+    console.count('Wes');
+    console.count('Steve');
+    console.count('Steve');
+    console.count('Steve');
+    console.count('Steve');
+    console.count('Steve');
 
+    // JavaScript 에서 Time 을 측정하는 것은 console.time 함수를 사용 시 매우 편함
+    // console.time 과 console.timeEnd 는 Set 로 작동함
+    // console.time(특정이름), console.timeEnd(특정이름) 두개의 이름이 일치하여야 같은 함수로 봄
+    // 특정이름이 맞아야 시간 측정이 됨, 만약 이름이 없을 시 default 로 지정이 됨
     // timing
+    console.time('fetching data');  // 개발자 도구 console 에 fetcing data 이름으로 console.timeEnd 찍힌 시간이 개발자도구에 찍힘
+    fetch('https://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
 
+    console.time('startConsole'); // 해당 startConsole 이라는 이름으로 timer 가 작동함
+    console.table(dogs);
+    console.timeEnd('startConsole');
+      
   </script>
 </body>
 </html>

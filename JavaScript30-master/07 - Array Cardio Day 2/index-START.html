@@ -9,7 +9,6 @@
   <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
   <script>
     // ## Array Cardio Day 2
-
     const people = [
       { name: 'Wes', year: 1988 },
       { name: 'Kait', year: 1986 },
@@ -26,17 +25,56 @@
     ];
 
     // Some and Every Checks
+    // 19 살 보다 나이가 더 많은 성인이 존재하는 지 확인
+    // some 함수는 존재하는 값이 하나라도 존재 시 True 를 반환
     // Array.prototype.some() // is at least one person 19 or older?
-    // Array.prototype.every() // is everyone 19 or older?
+    const isOlderThan19Year = (person) => {
+      const currentFullYear = Number(new Date().getFullYear());
+      const personYear = Number(person.year);
+      return (currentFullYear - personYear) >= 19;
+    }
 
+    const isExistOlder = people.some(isOlderThan19Year);
+    console.log('isExist Older : ' + isExistOlder);
+
+    // JavaScript Every 함수는 배열 안의 모든 요소가 주어진 판별 함수를 통과 하는 지 테스트 (Boolean 값을 반환)
+    // Array.prototype.every() // is everyone 19 or older?
+    const isEveryOlderThan19Years = people.every(isOlderThan19Year);
+
+    console.log('isEveryOlderThan19Years : ' + isEveryOlderThan19Years);
+
+    // JavaScript Find 함수는 boolean 값을 return 을 하며 true 가 되는 순간 해당 요소를 반환 (단 하나의 요소만 반환)
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
+    const findSpecificNum = (comment) => {
+      console.log('FIND SPECIFIN FIND NUM :  ' + JSON.stringify(comment));
+      const commentId = comment.id;
+      
+      return commentId === 823423;
+    }
 
+    const findComment = comments.find(findSpecificNum);
+    console.log('Find Comment : ' + JSON.stringify(findComment));
+
+    // JavaScript findIndex 함수는 해당 요소가 속한 Index 를 반환
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+    const findCommentIndex = comments.findIndex(findSpecificNum);
+    console.log('findCommentIndex : ' + JSON.stringify(findCommentIndex));
+
+    // ANSWER
+    // 전체 배열의 값을 복사
+    const newComments = [
+      ...comments.slice(0, findCommentIndex),
+      ...comments.slice(findCommentIndex + 1)
+    ];
+
+    console.log('FIND COMMENT INDEX DATA : ' + JSON.stringify(newComments));
+
 
   </script>
+
 </body>
 </html>
