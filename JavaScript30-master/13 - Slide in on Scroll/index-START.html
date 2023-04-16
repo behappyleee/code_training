@@ -44,6 +44,20 @@
   </div>
 
   <script>
+    
+    const scrollPage = (e) => {
+      let clientPageX = e.clientX;
+      let clientPageY = e.clientY;
+
+      console.log('SCROLL PAGE E PARAM : ', e);
+      console.log('client x : ' , clientPageX);
+      console.log('client y : ' , clientPageY); 
+
+
+    }
+
+    addEventListener('mousewheel', scrollPage);
+
     function debounce(func, wait = 20, immediate = true) {
       var timeout;
       return function() {
