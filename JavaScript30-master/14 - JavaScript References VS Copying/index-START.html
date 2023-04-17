@@ -14,12 +14,20 @@
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
+    
+    // arryCopy
+    const playersCopy = players;
 
     // You might think we can just do something like this:
+
+    // Edited New Copy Array
+    playersCopy.push('copyPush');
 
     // however what happens when we update that array?
 
     // now here is the problem!
+    console.log('ORIGINAL ARRY : ' + JSON.stringify(players));    // 기존 Array 에도 값이 추가가 됨
+    console.log('COPY ARRAY : ' + JSON.stringify(playersCopy));   // Copy 한 Array 에 추가하였지만 기존에 Array 에도 값이 추가 됨
 
     // oh no - we have edited the original array too!
 
@@ -29,14 +37,28 @@
 
     // one way
 
-    // or create a new array and concat the old one in
-
+    // or create a new array and concat the old one in  
+    
+    // Array 를 Reference 를 복사 하는 것이 아닌 값 자체를 복사를 하기
+    // 1. 새로운 배열을 생성 후 concat 으로 기존에 배열 값을 복사
+    let newCopyArray = [].concat(players);
+    newCopyArray.push('ConcatArrayPush');
+    
+    console.log('CONCAT ARRAY ORIGIN ARRAY DATA : ' + JSON.stringify(players));
+    console.log('NEW COPY ARRAY DATA CHECK : ' + JSON.stringify(newCopyArray));
+    
     // or use the new ES6 Spread
+    
+    // Spread 문법을 이용하여 기존에 존재하는 값을 모두 복사 값 자체만 복사 되므로 기존 값을 참조 하지 않은
+    let newCopyArraySpread = [...players];
+    newCopyArraySpread.push('spreadTest');
+    
+    console.log('CONCAT ARRAY ORIGIN ARRAY DATA : ' + JSON.stringify(players));
+    console.log('NEW COPY ARRAY DATA CHECK : ' + JSON.stringify(newCopyArraySpread));
 
     // now when we update it, the original one isn't changed
 
     // The same thing goes for objects, let's say we have a person object
-
     // with Objects
     const person = {
       name: 'Wes Bos',
@@ -49,7 +71,39 @@
 
     // We will hopefully soon see the object ...spread
 
+    // Object 값을 기존 처럼 복사를 Test
+    let personCopy = person;
+    personCopy.hometown = 'Korea';
+    
+    // Copy 된 값에 추가를 하였지만 기존에 값에도 hometown 값이 추가가 됨
+    console.log('ORIGINAL PERSON OBJECT : ' + JSON.stringify(person));
+    console.log('COPY PERSON OBJECT TEST : ' + JSON.stringify(personCopy));
+
+    // 해당 문제를 해결하기 위하여 Spread 문법을 사용
+    let personCopySpread = {...person};
+    personCopySpread.country = 'South Korea'; 
+
+    // Spread 문법을 이용을 하였기에 값 자체만 복사가 되어 기존 값을 참조하지 않기에 새로운 값을 추가하여도 기존에 값에만 복사가 됨
+    console.log('ORIGINAL PERSON OBJECT : ' + JSON.stringify(person));
+    console.log('COPY PERSON OBJECT TEST : ' + JSON.stringify(personCopySpread));
+
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    
+    // Object 를 새롭게 할당
+    const wes = {
+      name: 'Wes',
+      age: 100,
+      social: {
+        twitter: '@wesbos',
+        facebook: 'wesbos.developer'
+      }
+    };
+   
+    console.log(wes);
+
+    // Object assign 으로도 값 할당이 가능
+    const dev = Object.assign({}, wes);
+    const dev2 = JSON.parse(JSON.stringify(wes));
 
   </script>
 
