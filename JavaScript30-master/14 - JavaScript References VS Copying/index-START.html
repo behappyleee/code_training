@@ -88,7 +88,7 @@
     console.log('COPY PERSON OBJECT TEST : ' + JSON.stringify(personCopySpread));
 
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
-    
+
     // Object 를 새롭게 할당
     const wes = {
       name: 'Wes',
@@ -102,8 +102,55 @@
     console.log(wes);
 
     // Object assign 으로도 값 할당이 가능
+    // 불변성을 유지하여야 한다면 Object.assign 함수보다는 spread 연산자를 사용하는 것을 추천
+    // Object.assign 사용 시 불변성이 안지켜 지는 것은 아닌데 항상 빈 Object 로 넣어주어야 한다.
     const dev = Object.assign({}, wes);
     const dev2 = JSON.parse(JSON.stringify(wes));
+
+    const testObj_1 = {
+      a: 2,
+      b: 4
+    }
+    const testObj_2 = {
+      c: 6,
+      d: 8
+    }
+
+    // Object.assign(target, source) 방식으로 사용 target 값은 얕은 복사로 값이 변함
+    const objectAssignTest = Object.assign(testObj_1, testObj_2);
+
+    console.log('TEST OBJ 1 TEST : ' + JSON.stringify(testObj_1));  // {"a":2,"b":4,"c":6,"d":8} --> 값이 변함
+    console.log('TEST OBJ 2 TEST : ' + JSON.stringify(testObj_2));  // {"c":6,"d":8}
+    console.log('OBJECT ASSIGN TEST FULL ASSING : ' + JSON.stringify(objectAssignTest));
+
+    const testObj_3 = {
+      a: 7,
+      b: 8
+    }
+    const testObj_4 = {
+      c: 4,
+      d: 2
+    }
+
+    const assignReTest = Object.assign({}, {...testObj_3, ...testObj_4});
+
+    console.log('ASSIGN RE 3 TEST : ' + JSON.stringify(testObj_3)); // {"a":7,"b":8} --> 값이 변하지 않음
+    console.log('ASSIGN RE 4 TEST : ' + JSON.stringify(testObj_4)); // {"c":4,"d":2} --> 값이 변하지 않음
+    console.log('RE ASSIGN TEST RE TEST TOTAL : ' + JSON.stringify(assignReTest));  // {"a":7,"b":8,"c":4,"d":2} 값이 합쳐짐
+
+    const spreadTest_1 = {
+      x: 6,
+      z: 7
+    }
+    const spreadTest_2 = {
+      k: 8,
+      w: 4
+    }
+    const spreadObjectTest = {...spreadTest_1, ...spreadTest_2};
+
+    console.log('SPREAD 1 : ' + JSON.stringify(spreadTest_1));    // {"x":6,"z":7} --> 값이 변하지 않음
+    console.log('SPREAD 2 : ' + JSON.stringify(spreadTest_2));    // {"k":8,"w":4} --> 값이 변하지 않음
+    console.log('SPREAD Object 합침 : ' + JSON.stringify(spreadObjectTest));  //  {"x":6,"z":7,"k":8,"w":4} --> 값이 합쳐짐
 
   </script>
 
