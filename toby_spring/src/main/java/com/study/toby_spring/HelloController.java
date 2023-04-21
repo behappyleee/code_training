@@ -1,5 +1,7 @@
 package com.study.toby_spring;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +17,13 @@ import java.util.Objects;
 public class HelloController {
 
     private final HelloService helloService;  // 외부에 공개 할 필요 없음
+    // 이 해당 변수는 final 로 만들 수 없음 적어도 final 이면 생성자에서 인스턴스를 생성해 주어야 하는 데
+    // 해당 변수에 주입 시 setApplicationContext() 는 모든 인스턴스가 생성이 된 수 주입이 되어 final 키워드는 사용이 불가
+    private final ApplicationContext applicationContext;
 
-    public HelloController(HelloService helloService) {
+    public HelloController(HelloService helloService, ApplicationContext applicationContext) {
         this.helloService = helloService;
+        this.applicationContext = applicationContext;
     }
 
     // Spring Annotation 을 제거 Spring 대신 순수 자바로 구현
@@ -32,5 +38,13 @@ public class HelloController {
 
         return helloService.sayHello(Objects.requireNonNull(name));
     }
+    
+    // 실행 될 떄 자동으로 실행이 됨
+    // 생성자를 통하여 주입 받음 하여 applicationContext 변수 에 final 키워드 사용이 가능
+//    @Override
+//    public void setApplicationContext(ApplicationContext applicationContext) {
+//        System.out.println("APPLICATION CONTEXT TEST : " + applicationContext);
+//        this.applicationContext = applicationContext;
+//    }
 
 }

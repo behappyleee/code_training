@@ -36,6 +36,7 @@ public class TobySpringApplication {
 	public ServletWebServerFactory servletWebServerFactory() {
 		return new TomcatServletWebServerFactory();
 	}
+
 	@Bean
 	public DispatcherServlet dispatcherServlet() {
 		return new DispatcherServlet();
@@ -67,35 +68,42 @@ public class TobySpringApplication {
 		// 직접 시작하려면 복잡한 설정이 필요
 		// new Tomcat().start();
 
-		AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext() {
-			// ServletContainer 안에서 모든 관리를 하도록 변경을 함
-			@Override
-			protected void onRefresh() {
-				super.onRefresh();
-				// 객체는 2개 생성이 됨 TomcatServletWebServerFactory() 와 DispatcherServlet() 임
-				// 2개 도 Bean 으로 등록이 됨 (Bean 으로 등록 시 상당한 유연한 동작이 가능함)
-				// ServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
-				// Spring 프레임워크레 등록되어 있는 Bean 에 클래스를 가져옴 !
-				
-				// Bean 에 등록되어 있는 객체를 가져올 시 다음과 같이 사용
-				ServletWebServerFactory serverFactory = this.getBean(ServletWebServerFactory.class);
-				DispatcherServlet dispatcherServlet = this.getBean(DispatcherServlet.class);
+		// 해당 아래 내역은 method run() 으로 따로 뺴 줌
+		// 초창기 Springboot run 메서드랑 상당히 흡사함
+		MySpringApplication.run(TobySpringApplication.class, args);
 
-				WebServer webServer = serverFactory.getWebServer(servletContext -> {
-					// Servlet 을 직접 만드는 것 보다 dispatcherServlet 을 사용 (DispatcherServlet 은 알아서 모든 걸 다 해줌)
-					// Dispatcher Servlet 이 Bean 을 다 뒤짐, Bean 을 다뒤져서 Mapping 되어 있는 정보를 찾음
-					servletContext.addServlet("dispatcherServlet", dispatcherServlet)
-							// 요청 정보를 Controller 클래스 안에 Mapping 정보를 넣는 것이 가장 인기 많았음
-					.addMapping("/*");
-				});
-				webServer.start();
-			}
-		};
-		
+//		AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext() {
+//			// ServletContainer 안에서 모든 관리를 하도록 변경을 함
+//			@Override
+//			protected void onRefresh() {
+//				super.onRefresh();
+//				// 객체는 2개 생성이 됨 TomcatServletWebServerFactory() 와 DispatcherServlet() 임
+//				// 2개 도 Bean 으로 등록이 됨 (Bean 으로 등록 시 상당한 유연한 동작이 가능함)
+//				// ServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
+//				// Spring 프레임워크레 등록되어 있는 Bean 에 클래스를 가져옴 !
+//
+//				// Bean 에 등록되어 있는 객체를 가져올 시 다음과 같이 사용
+//				ServletWebServerFactory serverFactory = this.getBean(ServletWebServerFactory.class);
+//				DispatcherServlet dispatcherServlet = this.getBean(DispatcherServlet.class);
+//
+//				// 해당 set을 안하여도 dispatcherServlet 은 ApplicationContextAware 에 의하여 자동으로 주입이 됨
+//				dispatcherServlet.setApplicationContext(this);	// Spring Container 를 지정해 줌, Factory Method 를 이용하여 2개를 등록
+//
+//				WebServer webServer = serverFactory.getWebServer(servletContext -> {
+//					// Servlet 을 직접 만드는 것 보다 dispatcherServlet 을 사용 (DispatcherServlet 은 알아서 모든 걸 다 해줌)
+//					// Dispatcher Servlet 이 Bean 을 다 뒤짐, Bean 을 다뒤져서 Mapping 되어 있는 정보를 찾음
+//					servletContext.addServlet("dispatcherServlet", dispatcherServlet)
+//							// 요청 정보를 Controller 클래스 안에 Mapping 정보를 넣는 것이 가장 인기 많았음
+//					.addMapping("/*");
+//				});
+//				webServer.start();
+//			}
+//		};
+
 		// 해당 register 입력 시 자바로 된 구성정보가 있으니 여기서부터 시작하라는 의미
-		applicationContext.register(TobySpringApplication.class);
+//		applicationContext.register(TobySpringApplication.class);
 		// refresh 는 전형적인 초기화임 template Method 안에서 일정한 작업이 수행이 됨
-		applicationContext.refresh();		// 자기가 가진 구성정보를 이용하기 위하여 초기화
+//		applicationContext.refresh();		// 자기가 가진 구성정보를 이용하기 위하여 초기화
 
 //		applicationContext.registerBean(HelloController.class);
 //		applicationContext.registerBean(SimpleHelloService.class);	// Interface 는 안됨, HelloSerivce 를 구현한 클래스를 찾음 --> Controller 에서 파라미터로 전달
@@ -182,7 +190,42 @@ public class TobySpringApplication {
 //	public static void main(String[] args) {
 //		SpringApplication.run(TobySpringApplication.class, args);
 //	}
-
 	}
+
+
+	// MySpringApplication Class 로 해당 메서드로 옮김 !
+//	private static void run(Class<?> applicationClass, String... args) {
+//		AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext() {
+//			// ServletContainer 안에서 모든 관리를 하도록 변경을 함
+//			@Override
+//			protected void onRefresh() {
+//				super.onRefresh();
+//				// 객체는 2개 생성이 됨 TomcatServletWebServerFactory() 와 DispatcherServlet() 임
+//				// 2개 도 Bean 으로 등록이 됨 (Bean 으로 등록 시 상당한 유연한 동작이 가능함)
+//				// ServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
+//				// Spring 프레임워크레 등록되어 있는 Bean 에 클래스를 가져옴 !
+//
+//				// Bean 에 등록되어 있는 객체를 가져올 시 다음과 같이 사용
+//				ServletWebServerFactory serverFactory = this.getBean(ServletWebServerFactory.class);
+//				DispatcherServlet dispatcherServlet = this.getBean(DispatcherServlet.class);
+//
+//				// 해당 set을 안하여도 dispatcherServlet 은 ApplicationContextAware 에 의하여 자동으로 주입이 됨
+//				dispatcherServlet.setApplicationContext(this);    // Spring Container 를 지정해 줌, Factory Method 를 이용하여 2개를 등록
+//
+//				WebServer webServer = serverFactory.getWebServer(servletContext -> {
+//					// Servlet 을 직접 만드는 것 보다 dispatcherServlet 을 사용 (DispatcherServlet 은 알아서 모든 걸 다 해줌)
+//					// Dispatcher Servlet 이 Bean 을 다 뒤짐, Bean 을 다뒤져서 Mapping 되어 있는 정보를 찾음
+//					servletContext.addServlet("dispatcherServlet", dispatcherServlet)
+//							// 요청 정보를 Controller 클래스 안에 Mapping 정보를 넣는 것이 가장 인기 많았음
+//							.addMapping("/*");
+//				});
+//				webServer.start();
+//			}
+//		};
+//
+//		applicationContext.register(applicationClass);
+//		applicationContext.register();
+//	}
+
 }
 
