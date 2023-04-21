@@ -1,6 +1,7 @@
 package com.study.toby_spring;
 
 import org.apache.catalina.startup.Tomcat;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
@@ -70,7 +71,7 @@ public class TobySpringApplication {
 
 		// 해당 아래 내역은 method run() 으로 따로 뺴 줌
 		// 초창기 Springboot run 메서드랑 상당히 흡사함
-		MySpringApplication.run(TobySpringApplication.class, args);
+		SpringApplication.run(TobySpringApplication.class, args);
 
 //		AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext() {
 //			// ServletContainer 안에서 모든 관리를 하도록 변경을 함
@@ -190,7 +191,7 @@ public class TobySpringApplication {
 //	public static void main(String[] args) {
 //		SpringApplication.run(TobySpringApplication.class, args);
 //	}
-	}
+//	}
 
 
 	// MySpringApplication Class 로 해당 메서드로 옮김 !
@@ -225,7 +226,8 @@ public class TobySpringApplication {
 //
 //		applicationContext.register(applicationClass);
 //		applicationContext.register();
-//	}
+
+	}
 
 }
 
