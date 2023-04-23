@@ -16,15 +16,23 @@ import java.util.Objects;
 // @Component // Component 어노테이션으로 Spring Container 에 들어가는 컴포넌트라고 선언을 해버림
 public class HelloController {
 
+    // Spring Container 는 Bean 에서 Interface 를 구현한 클래스를 먼저 스캔한 후
+    // 만약 인터페이스를 구현을 한 클래스가 단 하나라면 그 클래스를 무주건 주입 시켜 줌 (단일 주입) - Autowiring
+    // 하지만 Version Up 되어도 Autowired 어노테이션을 삭제해주어도 자동으로 주입 시켜 줌
+
     private final HelloService helloService;  // 외부에 공개 할 필요 없음
     // 이 해당 변수는 final 로 만들 수 없음 적어도 final 이면 생성자에서 인스턴스를 생성해 주어야 하는 데
     // 해당 변수에 주입 시 setApplicationContext() 는 모든 인스턴스가 생성이 된 수 주입이 되어 final 키워드는 사용이 불가
-    private final ApplicationContext applicationContext;
+    // private final ApplicationContext applicationContext;
 
-    public HelloController(HelloService helloService, ApplicationContext applicationContext) {
+    public HelloController(HelloService helloService) {
         this.helloService = helloService;
-        this.applicationContext = applicationContext;
     }
+
+//    public HelloController(HelloService helloService, ApplicationContext applicationContext) {
+//        this.helloService = helloService;
+//        this.applicationContext = applicationContext;
+//    }
 
     // Spring Annotation 을 제거 Spring 대신 순수 자바로 구현
     // View 를 Reeturn 하는 것이 아니므로 API 임
@@ -36,7 +44,12 @@ public class HelloController {
         // SimpleHelloService helloService = new SimpleHelloService();
         // requireNonNull 을 이용하여 Null 인 경우를 체크
 
-        return helloService.sayHello(Objects.requireNonNull(name));
+        // Object.requireNonNull 은 NULL 만 체크하고 공백은 체크를 못해주므로 코드 수정
+        if(name == null || name.trim().length() == 0) {
+            throw new IllegalArgumentException();
+        }
+        return helloService.sayHello(name);
+        // return helloService.sayHello(Objects.requireNonNull(name));
     }
     
     // 실행 될 떄 자동으로 실행이 됨
