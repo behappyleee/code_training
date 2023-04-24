@@ -17,7 +17,6 @@ public class HelloDecorator implements HelloService {
     // 실제 Request 가 있을 때 만드는 Object (Lazy Loading 이라고 함)
     // Proxy 는 실체가 존재 하지만 앞에 대신할 수 있는 것을 가져다 놓는 느낌으로 이해
 
-
     // HelloDecorator 클래스가 생기면서
     // HelloService 를 상속한 Class 가 SimpleHelloService 랑 HelloDecorator 2개 클래스가 존재 함
     // 만약 프로그램 시작 시 2개 클래스가 인터페이스를 상속 후 제대로 Autowired 를 해주지 않을 시 에러가 발생 함 !!

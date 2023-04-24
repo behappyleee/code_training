@@ -1,47 +1,24 @@
 package com.study.toby_spring;
 
-import org.apache.catalina.startup.Tomcat;
+import com.study.config.MySpringAnnotation;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
-import org.springframework.boot.web.server.WebServer;
-import org.springframework.boot.web.servlet.ServletContextInitializer;
-import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.GenericApplicationContext;
-import org.springframework.context.support.GenericGroovyApplicationContext;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.context.support.GenericWebApplicationContext;
-import org.springframework.web.servlet.DispatcherServlet;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.net.HttpRetryException;
-
-@Configuration	// Config 정보를 가지고 있는 클래스라고 인식 (Config 어노테이션이 붙은 클래스는 Bean 이 존재한다고 인식)
+// @Configuration	// Config 정보를 가지고 있는 클래스라고 인식 (Config 어노테이션이 붙은 클래스는 Bean 이 존재한다고 인식)
 // Component 스캔이 직관적이므로 사용하기 쉬움
-@ComponentScan	// Component 어노테이션이 붙은 클래스들을 찾아서 Bean 으로 등록을 해줌
+// @ComponentScan	// Component 어노테이션이 붙은 클래스들을 찾아서 Bean 으로 등록을 해줌
+@MySpringAnnotation    // @Configuration / @Componet Annotation 을 등록 (Meta Annotation 개념으로)
 public class TobySpringApplication {
 	// 2개의 Bean Spring 에 Bean 을 등록
-	@Bean
-	public ServletWebServerFactory servletWebServerFactory() {
-		return new TomcatServletWebServerFactory();
-	}
-
-	@Bean
-	public DispatcherServlet dispatcherServlet() {
-		return new DispatcherServlet();
-	}
+	// Bean 을 Config 클래스로 뺴 줌
+//	@Bean
+//	public ServletWebServerFactory servletWebServerFactory() {
+//		return new TomcatServletWebServerFactory();
+//	}
+//
+//	@Bean
+//	public DispatcherServlet dispatcherServlet() {
+//		return new DispatcherServlet();
+//	}
 
 
 	// Spring 프레임워크에 Bean 을 등록

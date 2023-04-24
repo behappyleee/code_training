@@ -19,7 +19,8 @@ public class HelloController {
     // Spring Container 는 Bean 에서 Interface 를 구현한 클래스를 먼저 스캔한 후
     // 만약 인터페이스를 구현을 한 클래스가 단 하나라면 그 클래스를 무주건 주입 시켜 줌 (단일 주입) - Autowiring
     // 하지만 Version Up 되어도 Autowired 어노테이션을 삭제해주어도 자동으로 주입 시켜 줌
-
+    
+    // HelloService 에 의존 하게 됨, HelloService 를 구현한 클래스를 유연하게 바꾸어 가면 서 적용이 가능
     private final HelloService helloService;  // 외부에 공개 할 필요 없음
     // 이 해당 변수는 final 로 만들 수 없음 적어도 final 이면 생성자에서 인스턴스를 생성해 주어야 하는 데
     // 해당 변수에 주입 시 setApplicationContext() 는 모든 인스턴스가 생성이 된 수 주입이 되어 final 키워드는 사용이 불가

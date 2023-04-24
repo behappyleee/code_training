@@ -3,6 +3,23 @@ package com.study.toby_spring;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+@interface fastUnitTest {
+
+}
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.ANNOTATION_TYPE , ElementType.METHOD})
+@Test   // Meta Annotation 부여
+@interface UnitTest {
+}
+
 public class HelloServiceTest {
     
     // HelloApiTest 는
@@ -24,5 +41,8 @@ public class HelloServiceTest {
 
         Assertions.assertThat(res).isEqualTo("* Test *");
     }
+
+
+
 
 }
