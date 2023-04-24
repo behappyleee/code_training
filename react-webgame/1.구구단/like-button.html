@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>웹 게임</title>
+    </head>
+
+    <body>
+        <div id="root"></div>
+        <!-- REACT 18 Version CDN -->
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script>
+            // 웹이 Browser 를 읽는 것은 html / css / javascript 임
+            // React 도 그냥 JavaScript 일 뿐
+            'use strict';
+            // React 는 크게 Class 방식과 
+            // React 는 데이터 중심으로 움직임
+
+            // Component 는 데이터와 화면을 하나로 묶어 두는 것임
+            // React 가 해결하고자 했던 것은 데이터와 화면의 일치임
+            // React Class Class 는 거의 쓰이지는 않음 (1% 쓰이는 곳은 Error Boundary 하는 곳에서 쓰임)
+            // 화면 바뀌는 부분은 state 로 만드는 것이 좋음
+            class LikeButton extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = {liked: false};
+                }
+                render() {
+                    if(this.state.liked) {
+                        return 'You liked this.';
+                    }
+                    return React.createElement('button', {onClick: () => this.setState({liked:true})}, 'Like');
+                }
+            }
+            
+            // 화살표 함수
+            const LikeButtonArrow = () => {
+
+            }
+
+            // 함수형
+            function LikeButtonFunc() {
+
+            }
+
+        </script>    
+        <script>
+            ReactDOM.render(React.createElement(LikeButton), document.querySelector('#root'));
+        
+        </script>
+
+    </body>
+</html>
