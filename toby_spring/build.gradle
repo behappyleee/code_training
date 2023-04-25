@@ -12,8 +12,10 @@ repositories {
 	mavenCentral()
 }
 
+// spring-boot-starter 는 굉장히 많은 dependency 들이 있음
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-jetty'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
