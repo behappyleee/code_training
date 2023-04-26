@@ -1,6 +1,8 @@
 package com.study.config.autoConfig;
 
 import com.study.config.MyAutoConfiguration;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.web.embedded.jetty.JettyServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
@@ -8,6 +10,8 @@ import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.core.type.AnnotatedTypeMetadata;
+
+import javax.servlet.ServletContainerInitializer;
 
 @MyAutoConfiguration
 @Conditional(JettyWebServerConfig.JettyCondition.class)  // Conditional 어노테이션 사용 (due to multiple ServletWebServerFactory beans : ERROR 발생)
@@ -25,6 +29,7 @@ public class JettyWebServerConfig {
         public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
             return true;
         }
+
     }
 
 }
