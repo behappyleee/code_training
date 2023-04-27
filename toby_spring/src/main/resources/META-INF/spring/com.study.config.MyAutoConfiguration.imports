@@ -1,4 +1,5 @@
 com.study.config.autoConfig.TomcatWebServerConfig
 com.study.config.autoConfig.JettyWebServerConfig
+com.study.config.autoConfig.UndertowWebServerConfig
 com.study.config.autoConfig.DispatcherServletConfig
 
