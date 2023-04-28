@@ -15,13 +15,13 @@ repositories {
 // spring-boot-starter 는 굉장히 많은 dependency 들이 있음
 dependencies {
 	// Tomcat 임시 주석 처리 (Tomcat 은 starter-web 에 포함 되어 있으므로 exclude 를 사용하여 tomcat 을 사용하지 않음)
-	implementation('org.springframework.boot:spring-boot-starter-web') {
-		exclude group: 'org.springframework.boot',  module: 'spring-boot-starter-tomcat'
-	}
-	implementation 'org.springframework.boot:spring-boot-starter-jetty'
+	implementation('org.springframework.boot:spring-boot-starter-web') // {
+	//	exclude group: 'org.springframework.boot',  module: 'spring-boot-starter-tomcat'
+	// }
+	// implementation 'org.springframework.boot:spring-boot-starter-jetty'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	// Undertow WebServer dependency
+	// Undertow (WebServer 종류) WebServer dependency
 	// implementation group: 'io.undertow', name: 'undertow-core', version: '2.3.5.Final'
 }
 
