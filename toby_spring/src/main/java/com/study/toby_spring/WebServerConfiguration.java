@@ -8,7 +8,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration(proxyBeanMethods = false)
 public class WebServerConfiguration {
-
+    
+    // Bean 으로 등록이 됨
     @Bean
     ServletWebServerFactory customWebServerFactory() {
         TomcatServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();

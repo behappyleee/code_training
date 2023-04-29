@@ -2,6 +2,7 @@ package com.study.config.autoConfig;
 
 import com.study.config.ConditionalMyOnClass;
 import com.study.config.MyAutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.*;
@@ -15,6 +16,9 @@ import org.springframework.util.ClassUtils;
 public class TomcatWebServerConfig {
 
     @Bean("tomcatWebServerFactory")
+    @ConditionalOnMissingBean   // Class Leven 에 등록 된 Bean 이 없더라면 해당 Bean 을 등록
+    // class, method Level 에서도 설정 ==> 등록된 WebServer Bean 이 없다면 해당 Bean 을 등록 (다른 WebServer 등록 된 Bean 이 없다면 해당 Bean 을 WebServer 로 사용)
+    // Springboot 에서 만들어져 있는 ConditionalBean 을 사용
     public ServletWebServerFactory servletWebServerFactory() {
         return new TomcatServletWebServerFactory();
     }
