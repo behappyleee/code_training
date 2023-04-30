@@ -51,13 +51,11 @@ public class HelloApiTest {
 
         // name Parameter NULL 테스트
         ResponseEntity<String> res
+        //        = rest.getForEntity("http://localhost:8080/hello?name=", String.class);
+        // property 값에 context Path 가 추가가 되어 url 변경
                 = rest.getForEntity("http://localhost:8080/hello?name=", String.class);
-
         Assertions.assertThat(res.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
 
-
-
     }
-
 
 }

@@ -15,33 +15,33 @@ public class TobySpringApplication {
 
 	// ApplicationRunner Interface 를 구현한 어떤 Object 를 Return
 	// ApplicationRunner 객체는 프로그램 실행 시 어떤 코드가 실행하여야 할 떄 해당 객체가 실행이 됨
-	@Bean
-	ApplicationRunner applicationRunner(Environment env) {
-		// SpringBoot 에서 application.property 보다 우선 되는 것은 환경 변수임 (OS 에서 설정 된 환경 변수) - application.property 보다 우선순위 됨
-		// 원래라면 해당 코드로 익명 클래스로 생성을 하여 Return 을 하여야 하지만
-		// argument 도 하나이고 Override 해야 할 메서드도 한 개 이므로 람다식으로 변환이 가능
-//		return new ApplicationRunner() {
-//			@Override
-//			public void run(ApplicationArguments args) throws Exception {
+//	@Bean
+//	ApplicationRunner applicationRunner(Environment env) {
+//		// SpringBoot 에서 application.property 보다 우선 되는 것은 환경 변수임 (OS 에서 설정 된 환경 변수) - application.property 보다 우선순위 됨
+//		// 원래라면 해당 코드로 익명 클래스로 생성을 하여 Return 을 하여야 하지만
+//		// argument 도 하나이고 Override 해야 할 메서드도 한 개 이므로 람다식으로 변환이 가능
+////		return new ApplicationRunner() {
+////			@Override
+////			public void run(ApplicationArguments args) throws Exception {
+////
+////			}
+////		}
+//		// Interface 에 구현하여야 할 메서드가 여러개이면 람다식으로 변환이 불가하지만 인터페이스에서 구현하여야 할
+//		// 메서드가 한개라면 아래처럼 람다식으로 변환이 가능
 //
-//			}
-//		}
-		// Interface 에 구현하여야 할 메서드가 여러개이면 람다식으로 변환이 불가하지만 인터페이스에서 구현하여야 할
-		// 메서드가 한개라면 아래처럼 람다식으로 변환이 가능
-
-		// Property 우선 순위
-		// 1. System 설정 Property
-		// 2. OS 설정 Property
-		// 3. Application Property
-		return args -> {
-			String name = env.getProperty("my.name");
-			// application.property 에서 설정한 my.name 이 출력 되는 것이 아닌 Run -> Edit Configuration 에서 설정 한 MY_NAME property 값이 출력 이 됨
-			// 우선순위에서 application.properties 에서 설정한 프로퍼티 값보다 OS 에서 설장한 위에 property 값이 더 우선시 됨
-			// 현재는 System Property 를 설정 하여 해당 설정한 property 값이 실행이 됨
-			// -Dmy.name=SystemProperty 로 설정한 Property 값이 가장 우선 순위가 높아 해당 값이 실행이 됨
-			System.out.println("my.name property is : " + name);
-		};
-	}
+//		// Property 우선 순위
+//		// 1. System 설정 Property
+//		// 2. OS 설정 Property
+//		// 3. Application Property
+//		return args -> {
+//			String name = env.getProperty("my.name");
+//			// application.property 에서 설정한 my.name 이 출력 되는 것이 아닌 Run -> Edit Configuration 에서 설정 한 MY_NAME property 값이 출력 이 됨
+//			// 우선순위에서 application.properties 에서 설정한 프로퍼티 값보다 OS 에서 설장한 위에 property 값이 더 우선시 됨
+//			// 현재는 System Property 를 설정 하여 해당 설정한 property 값이 실행이 됨
+//			// -Dmy.name=SystemProperty 로 설정한 Property 값이 가장 우선 순위가 높아 해당 값이 실행이 됨
+//			System.out.println("my.name property is : " + name);
+//		};
+//	}
 
 	// 2개의 Bean Spring 에 Bean 을 등록
 	// Bean 을 Config 클래스로 뺴 줌
