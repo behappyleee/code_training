@@ -25,7 +25,7 @@ public class HelloApiTest {
         TestRestTemplate rest = new TestRestTemplate();
 
         ResponseEntity<String> res
-                = rest.getForEntity("http://localhost:8080/hello?name={name}", String.class, "nameTestSpring");
+                = rest.getForEntity("http://localhost:9090/app/hello?name={name}", String.class, "nameTestSpring");
 
         // 검증
         // 1. Status Code 가 200으로 왔는 지
@@ -53,7 +53,7 @@ public class HelloApiTest {
         ResponseEntity<String> res
         //        = rest.getForEntity("http://localhost:8080/hello?name=", String.class);
         // property 값에 context Path 가 추가가 되어 url 변경
-                = rest.getForEntity("http://localhost:8080/hello?name=", String.class);
+                = rest.getForEntity("http://localhost:9090/app/hello?name=", String.class);
         Assertions.assertThat(res.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
