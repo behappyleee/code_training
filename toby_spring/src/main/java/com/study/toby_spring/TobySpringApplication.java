@@ -10,6 +10,13 @@ import org.springframework.boot.SpringApplication;
 public class TobySpringApplication {
 	// 2개의 Bean Spring 에 Bean 을 등록
 	// Bean 을 Config 클래스로 뺴 줌
+
+	// 자동 구성 후보 Loading
+	// Conditional Class 조건 체크 -> @Conditional @Bean 조건 체크
+	// 커스텀 @Bean 구성 정보 -> MyAutoConfiguration @Bean 구성 정보
+
+	// SpringFramework 에서 제공 하는
+
 //	@Bean
 //	public ServletWebServerFactory servletWebServerFactory() {
 //		return new TomcatServletWebServerFactory();
@@ -19,7 +26,6 @@ public class TobySpringApplication {
 //	public DispatcherServlet dispatcherServlet() {
 //		return new DispatcherServlet();
 //	}
-
 
 	// Spring 프레임워크에 Bean 을 등록
 	// Bean 어노테이션은 Spring에 Component 로 인식
