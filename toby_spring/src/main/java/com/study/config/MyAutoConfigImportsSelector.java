@@ -32,14 +32,8 @@ public class MyAutoConfigImportsSelector implements DeferredImportSelector {
 //       }
 
         ImportCandidates.load(MyAutoConfiguration.class, classLoader).forEach(candidate -> {
-
-            System.out.println("CANDIDATE CHECK : " + candidate);
-
             autoConfigs.add(candidate);
         });
-
-        System.out.println("AUTO CONFIGS DATA CHECK :  " + autoConfigs);
-        System.out.println("AUTO CONFIGS SIZE CHECK :  " + autoConfigs.size());
 
         if(autoConfigs.isEmpty()) {
             // MethodReference 로도 대체가 가능 
