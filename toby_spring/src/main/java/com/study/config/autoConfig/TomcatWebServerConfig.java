@@ -1,10 +1,12 @@
 package com.study.config.autoConfig;
 
 import com.study.config.ConditionalMyOnClass;
+import com.study.config.EnableMyConfigurationProperties;
 import com.study.config.MyAutoConfiguration;
 import org.apache.catalina.Server;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.*;
@@ -16,6 +18,8 @@ import org.springframework.util.ClassUtils;
 @MyAutoConfiguration    // Meta Annotation 에 Configuration 어노테이션이 있어 Configuration 어노테이션과 똑같은 기능을 함
 // @Conditional(TomcatWebServerConfig.TomcatCondition.class)
 @ConditionalMyOnClass("org.apache.catalina.startup.Tomcat") // Conditional클래스를 직접 만듦 (Tomcat 이 있으면 True 를 반환 하므로 Tomcat 을 띄움)
+// @Import(ServerProperties.class) // Component 어노테이션 붙은 클래스를 Import 하여 Bean 으로 등록을 함
+@EnableMyConfigurationProperties(ServerProperties.class)  //
 public class TomcatWebServerConfig {
     
     // Property PlaceHolder 값을 이용하여 값을 주입 시켜 줌

@@ -3,4 +3,5 @@ com.study.config.autoConfig.JettyWebServerConfig
 com.study.config.autoConfig.UndertowWebServerConfig
 com.study.config.autoConfig.DispatcherServletConfig
 com.study.config.autoConfig.PropertyPlaceHolderConfig
-com.study.config.autoConfig.ServerPropertiesConfig
+com.study.config.autoConfig.PropertyPostProcessorConfig
+# com.study.config.autoConfig.ServerPropertiesConfig 주석 처리를 함 (조금 더 편리한 방법을 찾음)
