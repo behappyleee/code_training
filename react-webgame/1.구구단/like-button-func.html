@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>웹 게임</title>
+    </head>
+
+    <body>
+        <div id="root"></div>
+        <!-- REACT 18 Version CDN -->
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <!-- Babel 추가 -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script type="text/babel">  // babel 이 바꾸어줌
+            'use strict';
+
+            // 화살표 함수 장점이
+            // this 를 쓰지도 않아도 됨 (this 쓸일이 없음, 함수형 컴포넌트는 this 를 쓸일이 없음)
+
+            // React 에서는 어떤게 data 인지 / state 인지 감을 찾는 것이 중요
+            
+            function LikeButton() {
+                // 구조 분해 문법
+                // 배열에 그 자리에 해당하는 것을 바로 꺼내 버림 (조금 더 편하게 맘ㄴ들어 줌)
+                const [liked, setLiked] = React.useState(false);
+                const [news, setNews] = React.useState(['뉴스1', '뉴스2', '뉴스3', '뉴스4', '뉴스5', '뉴스6', '뉴스7'])
+                const [category, setCategory] = React.useState(['카테고리1', '카테고리2', '카테고리3', '카테고리4', '카테고리5', '카테고리6', '카테고리7'])
+
+                // 구조 분해 객체도 가능
+                // 배열 or 객체인지 많이 다름
+
+                // 무슨 짓을 하든 결국 return 한 것이 화면 임
+                // return 과 state 들 사이에서 별의 별 짓을 하지만 결국은 return 이 화면임
+                if(liked) {
+                    return 'You liked this';
+                }
+                return (
+                    <button onClick={() => {setLiked(true)}}>
+                        Like
+                </button>
+                )
+            }
+            
+        </script>    
+
+        <script type="text/babel">
+            // React 측에서 JSX 문법을 제공
+            // ReactDOM.render(<LikeButton />, document.querySelector('#root')); React 17 버전 코드임
+            // React 18 버전은 17 버전도 지원을 함
+            ReactDOM.createRoot(document.querySelector('#root')).render(<LikeButton />);    // React 18 버전 Code
+        </script>
+
+    </body>
+</html>
