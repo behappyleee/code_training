@@ -4,25 +4,22 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @HelloBootTest
 public class HelloRepositoryTest {
-    // TODO
-    // TEST 필요
-    // No DatSource Set Error 가 발생함
-    // 확인이 필요 (DataSourceSet 이 안됨 Test Error 가 발생하여 확인이 필요 !)
+    @Autowired
+    HelloRepository helloRepository;
 
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    @Autowired
-    HelloRepository helloRepository;
-
     @BeforeEach
     void init() {
         jdbcTemplate.execute(
-                "CREATE TABLE IF NOT EXISTS hello(name varchar(50) PRIMARY KEY, count int)"
+                "CREATE TABLE IF NOT EXISTS hello " +
+                        "(name varchar(50) PRIMARY KEY, count int)"
         );
     }
 
@@ -34,4 +31,15 @@ public class HelloRepositoryTest {
         Assertions.assertThat(helloRepository.findHello("Toby")).isNull();
     }
 
+    @Test
+    void increaseCount() {
+        helloRepository.increaseCount("Toby");
+        Assertions.assertThat(helloRepository.countOf("Toby")).isEqualTo(1);
+
+        helloRepository.increaseCount("Toby");
+        Assertions.assertThat(helloRepository.countOf("Toby")).isEqualTo(2);
+    }
+
 }
+
+

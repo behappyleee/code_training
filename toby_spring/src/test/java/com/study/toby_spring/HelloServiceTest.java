@@ -42,7 +42,4 @@ public class HelloServiceTest {
         Assertions.assertThat(res).isEqualTo("* Test *");
     }
 
-
-
-
 }
