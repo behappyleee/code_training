@@ -7,12 +7,14 @@ const removeFromArray = function(arr, ...filterArgs) {
             filteredArr.push(arr[i]);
         }
     }
-
     console.log('FILTERED ARR DATA TEST : ' + JSON.stringify(filteredArr));
-
     return filteredArr;
 };
 
+const removeFromArray_2 = function(arr, ...filterArgs) {
+    return arr.filter((item) => !filterArgs.includes(item));
+}
 
 // Do not edit below this line
 module.exports = removeFromArray;
+module.exports = removeFromArray_2;
