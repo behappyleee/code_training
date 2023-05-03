@@ -14,6 +14,8 @@ public class HelloControllerTest {
         // SpringContainer 상관 없이 순수 자바로 Test 진행
         // Test Stub 을 사용하여 진행
         // Dependency Injection 은 Runtime 시에 제 3자가 관계를 정의해 줌
+        
+        // HelloService 에 메서드가 1개에서 2개로 늘어나며서 람다식으로 사용이 안됨 (그래서 다른 메서드는 default 로 설정)
         HelloController helloController = new HelloController(name -> name);
         String res = helloController.hello("Test");
         Assertions.assertThat(res).isEqualTo("Test");

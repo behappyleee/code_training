@@ -6,12 +6,30 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import javax.annotation.PostConstruct;
 
 // @Configuration	// Config 정보를 가지고 있는 클래스라고 인식 (Config 어노테이션이 붙은 클래스는 Bean 이 존재한다고 인식)
 // Component 스캔이 직관적이므로 사용하기 쉬움
 // @ComponentScan	// Component 어노테이션이 붙은 클래스들을 찾아서 Bean 으로 등록을 해줌
 @MySpringAnnotation    // @Configuration / @Componet Annotation 을 등록 (Meta Annotation 개념으로)
 public class TobySpringApplication {
+
+	private final JdbcTemplate jdbcTemplate;
+
+	public TobySpringApplication(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	// PostConstruct 어노테이션은 스프링 컨테이너가 올라가면 Bean 으로 모든 준비가 끝날시 PostConstruction 어노테이션 붙은
+	// 메서드들을 자동으로 실행 Life Cycle 을 간단하게 대체가 가능
+	@PostConstruct	// SpringFramework 에서 Initalizaer 대신 간단하게 사용
+	void init() {
+		// SpringContainer 가 모두 올라가면 자동으로 실행이 되도록 설정
+		jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS hello(name varchar(50) " +
+				"PRIMARY KEY, count INT)");
+	}
 
 	// ApplicationRunner Interface 를 구현한 어떤 Object 를 Return
 	// ApplicationRunner 객체는 프로그램 실행 시 어떤 코드가 실행하여야 할 떄 해당 객체가 실행이 됨

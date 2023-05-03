@@ -61,4 +61,9 @@ public class HelloController {
 //        this.applicationContext = applicationContext;
 //    }
 
+    @GetMapping("/count")
+    public String getCount(String name) {
+        return  name + " : " + helloService.countOf(name);
+    }
+
 }

@@ -11,4 +11,10 @@ public interface HelloService {
     // 자동 구성 정보 - AutoConfiguration
 
     String sayHello(String name);
+
+    // 구현을 하였으면 그 값을 가져오고 안했으면 0 을 return
+    default int countOf(String name) {
+        return 0;
+    };
+
 }
