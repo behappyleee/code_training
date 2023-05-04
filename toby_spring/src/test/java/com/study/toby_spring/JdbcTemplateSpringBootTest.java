@@ -4,18 +4,14 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.test.annotation.Rollback;
 
-// 커스텀하여 생성한 어노테이션 사용
-@HelloBootTest
-// 아래 rollback 어노테이션은 HelloBootTest 어노테이션에 이미 Transcational 어노테이션이 있어 rollback 이 자동적으로 되지만 테스트를 위하여 rollback(false) 어노테이션을 붙여 줌
-// @Rollback(false)    // 강제로 Test 시에 rollback 하지 않도록 강제 시켜 버림 (데이터가 그냥 DB 에 저장 되어 버림)
-public class JdbcTemplateTest {
-
+@JdbcTest
+public class JdbcTemplateSpringBootTest {
     @Autowired
     JdbcTemplate jdbcTemplate;
-    
+
     // BeforeEach 는 매 테스트 마다 이전에 한번씩 수행을 함
     // 테스트 하기전에 DB 를 초기화 해줌 내장형 DB 는 보통 어플리케이션 시작할 때 초기화 DB 됨
     // 그래서 시작때 아무런 데이터가 없는 DB 로 시작이 됨
@@ -28,10 +24,10 @@ public class JdbcTemplateTest {
     @Test
     void insertAndQuery() {
         jdbcTemplate.update("INSERT INTO hello values(? ,?)"
-        , "Toby", 3);
+                , "Toby", 3);
 
         jdbcTemplate.update("INSERT INTO hello values(? ,?)"
-        , "Lee", 5);
+                , "Lee", 5);
 
         jdbcTemplate.update("INSERT INTO hello values(? ,?)"
                 , "Spring", 1);

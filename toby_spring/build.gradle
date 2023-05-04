@@ -27,7 +27,7 @@ dependencies {
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
 
 	// https://mvnrepository.com/artifact/com.zaxxer/HikariCP
-	implementation group: 'com.zaxxer', name: 'HikariCP', version: '2.3.2'
+	implementation group: 'com.zaxxer', name: 'HikariCP'
 
 	// IN-MEMORY DB 인 H2 데이터 베이스 테스트를 위하여 사용
 	// h2 database 는 소스에서 직접 사용할 일은 없어 Runtime 시에만 사용하도록 변경

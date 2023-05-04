@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.DispatcherServlet;
 
+// 기존 실습하였던 어노테이션을 주석 후 SpringBootApplication 어노테이션 사용을 위하여 주석 처리
 @Configuration // Configuration 어노테이션에 의하여 Bean 으로 등록을 해 줌 (Configuration 어노테이션 안에 Component 어노테이션이 있음)
 public class Config {
     // Package 가 다를 시 ComponentScan 대상이 아님
