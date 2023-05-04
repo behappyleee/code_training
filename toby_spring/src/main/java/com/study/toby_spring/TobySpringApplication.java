@@ -4,6 +4,7 @@ import com.study.config.MySpringAnnotation;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,7 +14,8 @@ import javax.annotation.PostConstruct;
 // @Configuration	// Config 정보를 가지고 있는 클래스라고 인식 (Config 어노테이션이 붙은 클래스는 Bean 이 존재한다고 인식)
 // Component 스캔이 직관적이므로 사용하기 쉬움
 // @ComponentScan	// Component 어노테이션이 붙은 클래스들을 찾아서 Bean 으로 등록을 해줌
-@MySpringAnnotation    // @Configuration / @Componet Annotation 을 등록 (Meta Annotation 개념으로)
+// @MySpringAnnotation    // @Configuration / @Componet Annotation 을 등록 (Meta Annotation 개념으로)
+@SpringBootApplication	// 기존 커스텀 마이징 하였던 어노테이션 대신 스프링 부트가 제공해주는 어노테이션을 사용
 public class TobySpringApplication {
 
 	private final JdbcTemplate jdbcTemplate;
