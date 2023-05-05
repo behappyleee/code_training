@@ -17,7 +17,17 @@ import javax.annotation.PostConstruct;
 // @MySpringAnnotation    // @Configuration / @Componet Annotation 을 등록 (Meta Annotation 개념으로)
 @SpringBootApplication	// 기존 커스텀 마이징 하였던 어노테이션 대신 스프링 부트가 제공해주는 어노테이션을 사용
 public class TobySpringApplication {
-
+	
+	// 사용 기술 선택 (Kotlin or Java ...)
+	// 1. Spring Intializer 로 Project Template 을 생성 (Gradle build.gradle 생성 or Maven pom.xml 생성)
+	// 2. 클래스 / 라이브러리 추가 (Springboot Starter + Dependencies)
+	// 3. AutoConfiguration AutoConfiguration.imports 자동 구성 후보 로딩
+	// 4. @Contional 맵핑 조건 판별
+	// 5. default 자동 구성 인프라 빈
+	// 6. 프로퍼티 소스 application.properties - 외부 설정 프로퍼티 적용
+	// 7. 
+	
+	
 	private final JdbcTemplate jdbcTemplate;
 
 	public TobySpringApplication(JdbcTemplate jdbcTemplate) {
