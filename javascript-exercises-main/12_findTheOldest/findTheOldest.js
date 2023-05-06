@@ -8,7 +8,7 @@ const findTheOldest = function(people) {
         if(liveYear > oldestPersonLiveYear) {
             oldestPerson = item; 
         }
-    });
+    });//test
 
     return oldestPerson;
 };
