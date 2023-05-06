@@ -5,61 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b4967e5-3a9d-4572-91fb-f7f73d22ecfb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/ConditionalMyOnClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/Config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/EnableMyAutoConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/EnableMyConfigurationProperties.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/MyAutoConfigImportsSelector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/MyAutoConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/MyConfigurationProperties.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/MyConfigurationPropertiesImportsSelector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/MyOnClassCondition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/MySpringAnnotation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/autoConfig/DatSourceConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/autoConfig/DispatcherServletConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/autoConfig/JettyWebServerConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/autoConfig/MyDataSourceProperties.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/autoConfig/PropertyPlaceHolderConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/autoConfig/PropertyPostProcessorConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/autoConfig/ServerProperties.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/autoConfig/ServerPropertiesConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/autoConfig/TomcatWebServerConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/config/autoConfig/UndertowWebServerConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/toby_spring/Hello.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/toby_spring/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/toby_spring/HelloDecorator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/toby_spring/HelloRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/toby_spring/HelloRepositoryJdbc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/toby_spring/HelloService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/toby_spring/MyComponent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/toby_spring/SimpleHelloService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/toby_spring/TobySpringApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/toby_spring/WebServerConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/spring/com.study.config.MyAutoConfiguration.imports" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/study/ConditionalTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/study/ConfigurationTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/toby_spring/DataSourceSpringBootTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/toby_spring/DataSourceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/toby_spring/HelloApiSpringBootTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/toby_spring/HelloApiTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/toby_spring/HelloBootTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/toby_spring/HelloControllerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/toby_spring/HelloRepositorySpringBootTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/toby_spring/HelloRepositoryTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/toby_spring/HelloServiceCountCheck.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/toby_spring/HelloServiceCountSpringBootTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/toby_spring/HelloServiceSpringBootTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/toby_spring/HelloServiceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/toby_spring/JdbcTemplateSpringBootTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/toby_spring/JdbcTemplateTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/study_toby/test.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,31 +216,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/dhfhf/Desktop/myfolder/workspace/code_training/toby_spring",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.15282792",
-    "settings.editor.selected.configurable": "editor.preferences.tabs",
-    "spring.configuration.checksum": "86668dac6e6fa0fbbdc97b9f14506c59",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dhfhf/Desktop/myfolder/workspace/code_training/toby_spring/origin_toby&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.15282792&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;86668dac6e6fa0fbbdc97b9f14506c59&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.study.toby_spring" />
@@ -304,7 +252,7 @@
       <recent name="com.study.toby_spring" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.HelloApiSpringBootTest">
+  <component name="RunManager" selected="Spring Boot.TobySpringApplication">
     <configuration name="DataSourceSpringBootTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -486,6 +434,11 @@
       <workItem from="1683288258919" duration="4872000" />
       <workItem from="1683344504851" duration="626000" />
       <workItem from="1683359649804" duration="1588000" />
+      <workItem from="1683376680581" duration="43000" />
+      <workItem from="1683376783160" duration="44000" />
+      <workItem from="1683376900846" duration="330000" />
+      <workItem from="1683377303781" duration="88000" />
+      <workItem from="1683377401156" duration="25000" />
     </task>
     <servers />
   </component>
