@@ -1,0 +1,43 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.10'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.study'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+// spring-boot-starter 는 굉장히 많은 dependency 들이 있음
+dependencies {
+	// Tomcat 임시 주석 처리 (Tomcat 은 starter-web 에 포함 되어 있으므로 exclude 를 사용하여 tomcat 을 사용하지 않음)
+	// implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation('org.springframework.boot:spring-boot-starter-web') // {
+	//	exclude group: 'org.springframework.boot',  module: 'spring-boot-starter-tomcat'
+	// }
+	// implementation 'org.springframework.boot:spring-boot-starter-jetty'
+	
+	// Spring JDBC 직접 주입
+	// https://mvnrepository.com/artifact/org.springframework/spring-jdbc
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jdbc
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
+
+	// https://mvnrepository.com/artifact/com.zaxxer/HikariCP
+	implementation group: 'com.zaxxer', name: 'HikariCP'
+
+	// IN-MEMORY DB 인 H2 데이터 베이스 테스트를 위하여 사용
+	// h2 database 는 소스에서 직접 사용할 일은 없어 Runtime 시에만 사용하도록 변경
+	implementation  'com.h2database:h2:2.1.214'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// Undertow (WebServer 종류) WebServer dependency
+	// implementation group: 'io.undertow', name: 'undertow-core', version: '2.3.5.Final'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
