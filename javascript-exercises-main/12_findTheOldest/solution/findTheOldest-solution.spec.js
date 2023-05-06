@@ -1,5 +1,6 @@
 const findTheOldest = require('./findTheOldest-solution');
 
+// TODO Solution ... ? 확인 필요 check to solution !!
 describe('findTheOldest', () => {
   test('finds the oldest person!', () => {
     const people = [
@@ -19,7 +20,7 @@ describe('findTheOldest', () => {
         yearOfDeath: 1941,
       },
     ];
-    expect(findTheOldest(people).name).toBe('Ray');
+    expect( findTheOldest(people).name ).toBe('Ray');
   });
   test('finds the oldest person if someone is still living', () => {
     const people = [
@@ -39,6 +40,7 @@ describe('findTheOldest', () => {
       },
     ];
     expect(findTheOldest(people).name).toBe('Ray');
+    // expect(findTheOldestPersonStillLiving(people).name).toBe('Ray');
   });
   test('finds the oldest person if the OLDEST is still living', () => {
     const people = [

@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 
 // 만약 해당 파라미터값 없고 서버 꺼진 후 테스트 실행 시 테스트 Fail
 // 우리가 지정한 application SERVER.PORT 를 실제 띄우고 테스트를 수행해달라는의미에 어노테이션

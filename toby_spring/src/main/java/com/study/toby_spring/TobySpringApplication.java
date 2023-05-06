@@ -17,7 +17,8 @@ import javax.annotation.PostConstruct;
 // @MySpringAnnotation    // @Configuration / @Componet Annotation 을 등록 (Meta Annotation 개념으로)
 @SpringBootApplication	// 기존 커스텀 마이징 하였던 어노테이션 대신 스프링 부트가 제공해주는 어노테이션을 사용
 public class TobySpringApplication {
-	
+
+	// 직접 설정 시
 	// 사용 기술 선택 (Kotlin or Java ...)
 	// 1. Spring Intializer 로 Project Template 을 생성 (Gradle build.gradle 생성 or Maven pom.xml 생성)
 	// 2. 클래스 / 라이브러리 추가 (Springboot Starter + Dependencies)
@@ -25,9 +26,13 @@ public class TobySpringApplication {
 	// 4. @Contional 맵핑 조건 판별
 	// 5. default 자동 구성 인프라 빈
 	// 6. 프로퍼티 소스 application.properties - 외부 설정 프로퍼티 적용
-	// 7. 
-	
-	
+
+	// 자동 빈 등록
+	// @ComponentScan (애플레케이션 로직 빈 @Component Bean 으로 등록)
+	// @Configurarion (커스텀 인프라 빈 대체)
+	// @Configuration (추가 인프라 빈)
+	// 유저 구성 어플리케이션 빈
+
 	private final JdbcTemplate jdbcTemplate;
 
 	public TobySpringApplication(JdbcTemplate jdbcTemplate) {
@@ -36,7 +41,7 @@ public class TobySpringApplication {
 	
 	// PostConstruct 어노테이션은 스프링 컨테이너가 올라가면 Bean 으로 모든 준비가 끝날시 PostConstruction 어노테이션 붙은
 	// 메서드들을 자동으로 실행 Life Cycle 을 간단하게 대체가 가능
-	@PostConstruct	// SpringFramework 에서 Initalizaer 대신 간단하게 사용
+	@PostConstruct	// SpringFramework 에서 Initializer 대신 간단하게 사용
 	void init() {
 		// SpringContainer 가 모두 올라가면 자동으로 실행이 되도록 설정
 		jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS hello(name varchar(50) " +
