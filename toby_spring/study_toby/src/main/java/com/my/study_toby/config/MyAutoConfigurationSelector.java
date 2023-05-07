@@ -1,5 +1,6 @@
 package com.my.study_toby.config;
 
+import com.my.study_toby.config.autoConfig.MyAutoConfiguration;
 import org.springframework.boot.context.annotation.ImportCandidates;
 import org.springframework.context.annotation.DeferredImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
@@ -18,9 +19,12 @@ public class MyAutoConfigurationSelector implements DeferredImportSelector {
     @Override
     public String[] selectImports(AnnotationMetadata importClassMetadata) {
         List<String> autoConfigs = new ArrayList<>();
-        ImportCandidates.load(MyAutoConfiguration.class, classLoader).forEach(candidate -> {
+        ImportCandidates.load(MyAutoConfiguration.class, classLoader).forEach(
+                candidate -> {
             autoConfigs.add(candidate);
         });
+
+        System.out.println("selectImports Config Check : " + autoConfigs);
 
         return autoConfigs.toArray(new String[0]);
     }
