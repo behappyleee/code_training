@@ -43,6 +43,57 @@
 
 <button></button>
 <script>
+  // Understanding JavaScript Capture !
+  const oneSelector = document.querySelector('.one');
+  const twoSelector = document.querySelector('.two');
+  const threeSelector = document.querySelector('.three');
+  
+  const divSelector = document.querySelectorAll('div');
+  const buttonSelector = document.querySelector('button');
+
+  function showOne() {
+    alert('test !!')
+  }
+
+  function showTwo() {
+    alert('test 2 !!');
+  }
+
+  function showThree() {
+    alert('test 3 !!');
+  }
+
+  function clickButton() {
+    alert('click button !');
+  }
+
+  function logText(e) {
+
+    // e.stopPropagation(); // event bubbling 을 막으려면 해당 함수를 사용하거나 아래 capture, once option 을 사용
+
+    console.log('LOG TEXT E TARGET 1 : ' + this.classList);
+    console.log('LOG TEXT E TARGET 2 : ' + this.classList.value);
+  }
+
+  oneSelector.addEventListener('click', showOne, {once: true});   // 해당 옵션을 설정 히 한번만 실행이 됨
+  twoSelector.addEventListener('click', showTwo);
+  threeSelector.addEventListener('click', showThree);
+
+  // capture 옵션은 버블링을 방지 시켜 줌
+  // bubbling - 한 요소에 이벤트가 발생하면 이 요소에 할당 된 핸들러가 동작 하고 이어서 부모 요소의 핸들러가 동작
+  // 가장 최상단의 조상 요소를 만날 때까지 이 과정이 반복되면서 요소 각각에 할당된 핸들러가 동작 함.
+  
+  // 버블링 중단 방식은 이벤트 객체 메서드인 event.stopPropagation() 를 사용하기도 함
+
+  divSelector.forEach((item) => {
+    // item.addEventListener('click', logText); // e.stopPropagation(); 을 사용시 옵션 없이 그냥 이렇게 사용하여 도 됨
+    item.addEventListener('click', logText, {
+      capture: false,
+      once: true
+    });
+  })
+
+  buttonSelector.addEventListener('click', clickButton);
 
 </script>
 </body>
