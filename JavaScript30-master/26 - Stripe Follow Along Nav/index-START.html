@@ -75,6 +75,9 @@
     </ul>
   </nav>
 
+  <button onclick="testButton()">
+    Test Button 
+  </button>
 <style>
   html {
     box-sizing: border-box;
@@ -221,6 +224,13 @@
 </style>
 
 <script>  
+
+  function testButton() {
+    alert('tttt');
+    return false;
+  }
+
+
   const triggers = document.querySelectorAll('.cool > li');
   const background  = document.querySelector('.dropdownBackground');
   const nav  = document.querySelector('.top');

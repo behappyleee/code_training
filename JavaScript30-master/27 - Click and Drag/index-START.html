@@ -36,6 +36,23 @@
   </div>
 
 <script>
+  const divSelector = document.querySelector('.items');
+
+  function dragStartEvent(e) {
+    console.log('Drag Start Event e : ' , e);
+
+
+  }
+
+  function dragEndEvent(e) {
+    console.log('Drag End Event e : ' , e);
+
+  }
+
+ divSelector.addEventListener('drag', dragStartEvent);
+ divSelector.addEventListener('dragend', dragEndEvent); 
+
+
 </script>
 
   </body>
