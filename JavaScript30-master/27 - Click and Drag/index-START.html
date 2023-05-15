@@ -36,22 +36,40 @@
   </div>
 
 <script>
-  const divSelector = document.querySelector('.items');
+  const slider = document.querySelector('.items');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
-  function dragStartEvent(e) {
-    console.log('Drag Start Event e : ' , e);
-
-
+  function fn_mouseDown(e) {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
   }
 
-  function dragEndEvent(e) {
-    console.log('Drag End Event e : ' , e);
-
+  function fn_mouseleave() {
+    isDown = false;
+    slider.classList.remove('active');
   }
 
- divSelector.addEventListener('drag', dragStartEvent);
- divSelector.addEventListener('dragend', dragEndEvent); 
+  function fn_mouseup() {
+    isDown = false;
+    slider.classList.remove('active');
+  }
 
+  function fn_mousemove(e) {
+    if (!isDown) return;  // stop the fn from running
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 3;
+    slider.scrollLeft = scrollLeft - walk;
+  }
+
+  slider.addEventListener('mousedown', fn_mouseDown);
+  slider.addEventListener('mouseleave', fn_mouseleave);
+  slider.addEventListener('mouseup', fn_mouseup);
+  slider.addEventListener('mousemove', fn_mousemove);
 
 </script>
 
