@@ -1,8 +1,7 @@
 const timerSelector = document.querySelectorAll('.timer__button');
 let selectedTimeSec = 0;
 let selectedTimer;
-// TODO 
-// 시간 표출 하여 주기 !!!!
+
 function triggerTimer(e) {
     let selectTime = e.srcElement.dataset.time;
     if(selectedTimeSec == selectTime) {
