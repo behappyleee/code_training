@@ -41,32 +41,35 @@
   let countNum = 0;
   let selecthole;
 
-  let showInterval = setInterval(() => {
-    let randomNum = Math.floor(Math.random()*(5-0+1));    // 난수 생성 0~5 까지 난수 생성
-    selecthole = holes[randomNum];  
+  function startGame() {
+      scoreBoard.textContent = 0;
+      let showInterval = setInterval(() => {
+      let randomNum = Math.floor(Math.random()*(5-0+1));    // 난수 생성 0~5 까지 난수 생성
+      
+      selecthole = holes[randomNum];  
+      // TODO
+      // 왜 클래스 추가 시 한칸 띄워서 추가하여야 하는 지 확인이 필요 
+      selecthole.className += " up";
+        
+        // TODO
+        // 비동기 확실히 이해가 필요 왜 해당 함수가 바로 실행 되어 클래스 없어지는 지 확인이 필요 ..
+        // setTimeout(disappearHole(selecthole), 3500);
+      setTimeout(() => {
+        selecthole.classList.remove('up');
+      }, 1000);
 
-    // TODO
-    // 왜 클래스 추가 시 한칸 띄워서 추가하여야 하는 지 확인이 필요 
-    selecthole.className += " up";
-    
-    // TODO
-    // 비동기 확실히 이해가 필요 왜 해당 함수가 바로 실행 되어 클래스 없어지는 지 확인이 필요 ..
-    // setTimeout(disappearHole(selecthole), 3500);
-    setTimeout(() => {
-      selecthole.classList.remove('up');
-    }, 1000);
-
-    countNum++;
-    if(countNum > 9) {
-      clearInterval(showInterval);
-    }
-  }, 2000);
+      countNum++;
+      if(countNum > 9) {
+        clearInterval(showInterval);
+      }
+    }, 2000);
+  }
 
   function disappearHole(holeName) {
     holeName.classList.remove('up');
   }
 
-  function clickMole(e) {
+  function clickMoleCount(e) {
     let parentElementClassList = e.srcElement.parentElement?.classList;
     if(!parentElementClassList) {
       return;
@@ -78,7 +81,6 @@
         return;
       }
       let selectholeClass = selectholeClassList[1];
-
       if(parentHole == selectholeClass) {
           let currentScore = document.querySelector('.score').innerHTML;
           document.querySelector('.score').innerHTML = (Number(currentScore) + 1);
@@ -86,7 +88,8 @@
       }
   }
 
-  window.addEventListener('click', clickMole);
+  moles.forEach((item) => item.addEventListener('click', clickMoleCount));
+  
 
 </script>
 </body>
