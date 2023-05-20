@@ -1,0 +1,78 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+    function triggerOper() {
+        return axios.get('https://raw.githubusercontent.com/iluwatar/java-design-patterns/master/promise/README.md')
+            .then((res) => {
+                return 7;
+            }).catch((err) => {
+                console.log('TRIGER CATCH ERR : ', err);               
+            })
+    }
+
+    async function makeStop(timeSec) {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                console.log('THIS IS MAKE STOP IN SETTIME OUT METHOD !!');
+                return 'JSON DATA TEST';
+            }, 2000);
+        }).catch((err) => {
+            return 'error';
+        })
+    }
+
+    function thisisTest() {
+        console.log('THIS IS TEST AXIOS METHOD !!!')
+        return 3333;
+    }    
+
+    const makeStopTime = timeDelay => new Promise(resolve => setTimeout(thisisTest ,timeDelay)); 
+
+    async function asyncTest() {
+        var today = new Date();
+        var hours = today.getHours();
+        var minutes = today.getMinutes();
+        var seconds = today.getSeconds();
+        var mili = today.getMilliseconds();
+
+        console.log('IN AXIOS TIME CHECK TIME FIRST : ' + hours + ' : ' + minutes + ' : ' + seconds + ' : ' + mili);
+
+        let testNum;
+
+        console.log('BEFORE MAKE STOP');
+        
+        // let makeSopData = await makeStop(2000).then((res) => {
+        //     console.log('amke !' + res);
+
+        // });
+
+        let makeSopData = await makeStopTime(3000);
+
+        console.log('AFTER MAKE STOP : ' + makeSopData);
+
+        makeSopData.then((res) => {
+            console.log('MAKE STOP RES DATA CHECK : ' + res);
+        })
+
+        // setTimeout(testNum = triggerOper() ,2000);
+        // console.log('ASYNC TEST DATA CHECK : ' + testNum);
+        // triggerOper().then((res) => {
+        //     console.log('TRIGGER ASYNC TEST DATA CHECK : ' + res);
+        //     console.log('TRIPGGER OPER ERR : ' , err);
+        // })
+
+        var today = new Date();
+        var hours = today.getHours();
+        var minutes = today.getMinutes();
+        var seconds = today.getSeconds();
+        var mili = today.getMilliseconds();
+
+        console.log('IN AXIOS TIME CHECK TIME SECOND : ' + hours + ' : ' + minutes + ' : ' + seconds + ' : ' + mili);
+    }
+
+</script>
+
+
+<button onclick="asyncTest()">
+    CLICK !
+</button>

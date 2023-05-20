@@ -33,6 +33,8 @@
     </div>
   </div>
 
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
   const holes = document.querySelectorAll('.hole');
   const scoreBoard = document.querySelector('.score');
@@ -41,8 +43,80 @@
   let countNum = 0;
   let selecthole;
 
+  function setPromiseTest() {
+    let today = new Date();
+    let hours = today.getHours();
+    let minutes = today.getMinutes();
+    let seconds = today.getSeconds();
+    let mili = today.getMilliseconds();
+
+    console.log('IN AXIOS TIME CHECK TIME FIRST : ' + hours + ' : ' + minutes + ' : ' + seconds + ' : ' + mili);
+
+    axios.get('https://raw.githubusercontent.com/iluwatar/java-design-patterns/master/promise/README.md')
+      .then((res) => {
+        let today = new Date();
+        let hours = today.getHours();
+        let minutes = today.getMinutes();
+        let seconds = today.getSeconds();
+        let mili = today.getMilliseconds();
+        console.log('IN AXIOS TIME CHECK TIME FIRST : ' + hours + ' : ' + minutes + ' : ' + seconds + ' : ' + mili);
+        return res;
+      }).catch((err) => {
+        console.log('set Promise TEST CATCH ERR : ', err);
+    })
+  }
+ 
+
+  async function testSetTime() {
+    let today = new Date();
+    let hours = today.getHours();
+    let minutes = today.getMinutes();
+    let seconds = today.getSeconds();
+    let mili = today.getMilliseconds();
+
+    console.log('CURRENT NOW TIME FIRST : ' + hours + ' : ' + minutes + ' : ' + seconds + ' : ' + mili);
+    // setTimeout 은 Promise 함수가 아니기에 Pormise 함수를 반환하지 않음 직접 만들어서 사용
+    // setTimeout(alert('test !'), 2000);
+    // await setTimeout(async () => alert('test !'), 2000);
+    let test;
+
+    console.log('before');
+
+    setTimeout(testPromise, 2000);
+
+
+    setTimeout(async () => {
+      let today = new Date();
+      let hours = today.getHours();
+      let minutes = today.getMinutes();
+      let seconds = today.getSeconds();
+      let mili = today.getMilliseconds();
+
+      test = await setPromiseTest()
+
+      console.log('AWAIT TIME TEST DATA CEHCK  : ' + hours + ' : ' + minutes + ' : ' + seconds + ' : ' + mili);
+    }, 2000);
+
+    console.log('after');
+
+    // setTimeout(test = await setPromiseTest(), 2000);
+    // setPromiseTest();
+
+    seconds = today.getSeconds();
+    mili = today.getMilliseconds();
+
+    console.log('CURRENT NOW TIME SECOND : ' + hours + ' : ' + minutes + ' : ' + seconds + ' : ' + mili);
+  
+  }
+
   function startGame() {
-      scoreBoard.textContent = 0;
+    
+    // FOR TEST !
+    testSetTime();
+    return;
+    
+    
+    scoreBoard.textContent = 0;
       let showInterval = setInterval(() => {
       let randomNum = Math.floor(Math.random()*(5-0+1));    // 난수 생성 0~5 까지 난수 생성
       
