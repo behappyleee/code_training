@@ -10,6 +10,11 @@ import java.util.List;
 
 public class MyAutoConfigurationSelector implements DeferredImportSelector {
 
+    static {
+        System.out.println("THIS IS STATIC METHOD IN MY AUTO CONFIG");
+    }
+
+
     private final ClassLoader classLoader;
 
     public MyAutoConfigurationSelector(ClassLoader classLoader) {
@@ -28,6 +33,31 @@ public class MyAutoConfigurationSelector implements DeferredImportSelector {
 
         return autoConfigs.toArray(new String[0]);
     }
+
+    public static void main(String[] args) {
+        {
+            System.out.println("THIS IS TES");
+        }
+
+        // Test DeployTest My.jar
+        callDeploy();
+    }
+
+    public static void callDeploy() {
+        System.out.println("THIS IS CALL DEPOLY METHOD TEST !!!");
+    }
+
+    public void testDeploy() {
+        // DeployTest dt = new DeployTest();
+    }
+
+    public String streamTest() {
+        System.out.println("System Out Println Test");
+        return null;
+    }
+
+
+
 
 
 }

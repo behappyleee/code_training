@@ -1,0 +1,43 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    async function promiseTest() {
+        return axios.get('https://raw.githubusercontent.com/iluwatar/java-design-patterns/master/promise/README.md')
+            .then(async (res) => {
+                console.log('THIS IS PROMISE TEST RES');
+
+                return 'PROMISE RES DATA TEST';
+
+            }).catch((err) => {
+                console.log('PROMISE ERR DATA TEST');
+            })
+    }
+
+    let awaitCheck = async (timeSec) => {
+        console.log('AWAIT CHECK TIME SEC : ' + timeSec);
+
+        return await new Promise(res => setTimeout(promiseTest , timeSec));
+    }
+
+    async function callSettime() {
+        let afterTest = 1;
+
+        console.log('BEFORE AWAIT CHECK  : ' + afterTest);
+        
+        let awaitCheckT = await awaitCheck(3000);
+     
+        console.log('AFTER AWAIT CHECK77555 : ' + awaitCheckT);
+        console.log('CALL SET AFTER TEST VALUE : ' + afterTest);
+
+    }
+
+
+
+
+
+
+
+</script>
+
+<button onclick="callSettime()">
+    Promise !
+</button>

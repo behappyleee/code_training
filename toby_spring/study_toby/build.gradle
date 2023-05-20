@@ -20,6 +20,7 @@ repositories {
 
 dependencies {
 	implementation ('org.springframework.boot:spring-boot-starter-web')
+	implementation files('libs/deploy-test.jar')
 //	implementation ('org.springframework.boot:spring-boot-starter-web') {
 //		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
 //	}
