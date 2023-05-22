@@ -5,6 +5,10 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class SpringTestClass {
 
+     // Spring
+     // This is from branch_2 commit test
+     // merge commit test check
+
      {
         System.out.println("THIS IS SPRING TEST CLASS CLASS THEST CHECK");
      }
