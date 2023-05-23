@@ -13,6 +13,10 @@ public class SpringTestClass {
 
      // This is Test from Spring Test Class To Another Branch !!!!
 
+     // Spring Test Class Commit
+     // Branch Commit Test
+
+
      {
         System.out.println("THIS IS SPRING TEST CLASS CLASS THEST CHECK");
      }

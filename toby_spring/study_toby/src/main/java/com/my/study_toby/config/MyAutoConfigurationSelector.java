@@ -56,8 +56,4 @@ public class MyAutoConfigurationSelector implements DeferredImportSelector {
         return null;
     }
 
-
-
-
-
 }
