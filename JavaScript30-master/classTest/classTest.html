@@ -1,0 +1,51 @@
+<script>
+
+    class Person {
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+            this.email = '';
+        }
+    }
+
+    // Prototype 정의
+    Person.prototype.getAge = function () {
+        return this.age;
+    }
+
+    Date.prototype.getDateTest = function(param) {
+        return 'this is prototype getDate Test : ' + param;
+    }
+
+    function classTest() {
+        let personObj = new Person();
+        personObj.name = 'lee';
+        personObj.age = 20;
+        personObj.email = 'test@test.com';
+
+        let age  = personObj.getAge();
+
+        console.log('PERSON OBJ DATA CHECK : ', personObj);
+        console.log('CALSS TEST AGE : ' + age);
+        
+        datePrototypeCheck();        
+
+    }
+
+    function datePrototypeCheck() {
+        let dt = new Date();
+        let dtTest = dt.getDateTest('Date Prototype Param Test');
+
+        console.log('DATE PROTOTYPE CHECK : ' + dtTest);
+    }
+
+
+
+
+
+</script>
+
+
+<button onclick="classTest()">
+    class !
+</button> 
