@@ -9,10 +9,6 @@ import java.net.ServerSocket;
 // @SpringBootApplication
 @TobyApplication
 public class StudyTobyApplication {
-	// Study Toby Branch Test
-	ServerSocket sc;
-
-
 	// This is Test
 	// FROM my_toby Branch Test
 
