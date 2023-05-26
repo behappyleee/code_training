@@ -17,6 +17,10 @@ public class StackQueueTest {
     // enqueue 는 값을 집어 넣음, dequeue 는 가장 첫번 째 값을 꺼냄 peek 은 가장 첫번쨰 값을 확인
 
 
+    // Stack 사용 사례 - Stack Frame, Stack Memory 구조
+    // Queue 사용 사례 - Message Queue
+
+
     public static void main(String[] args) {
         Stack<Integer> stackTest = new Stack<>();
 
