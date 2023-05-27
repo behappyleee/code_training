@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.net.ServerSocket;
 
-// @SpringBootApplication
-@TobyApplication
+@SpringBootApplication
+// @TobyApplication
 public class StudyTobyApplication {
 	// This is Test
 	// FROM my_toby Branch Test

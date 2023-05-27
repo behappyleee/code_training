@@ -1,0 +1,27 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+// AsyncTest
+function getString() {
+
+    console.log('AXIOS TEST CHECK !');
+
+
+    axios.get('http://localhost:9090/hello')
+        .then((res) => {
+            console.log('GET STRING RES DATA : ', res);
+            console.log('GET STRING RES DATA : ' + JSON.stringify(res));
+
+
+        }).catch((err) => {
+            console.log('AXIOS GET STRING ERR : ' + JSON.stringify(err));
+        })
+}
+
+
+
+</script>
+
+<button onclick="getString()">
+    SEND AXIOS TEST !
+</button>

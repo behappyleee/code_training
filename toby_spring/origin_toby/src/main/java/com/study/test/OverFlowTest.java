@@ -9,9 +9,22 @@ public class OverFlowTest {
 //            String a = new String("OverFlowTest");
 //            callTestMethod();
 //        }
+
+
+
+
     }
 
     public static void callTestMethod() {
 
     }
+}
+
+interface TestI {
+
+    default public String printTest() {
+        System.out.println("This is Test Method");
+        return null;
+    };
+
 }
