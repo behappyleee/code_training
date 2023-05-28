@@ -50,7 +50,13 @@ public class StackQueueTest {
        int qD = (Integer) queueTest.peek();
        System.out.println("QUEUE TEST PEEK : " + qD);  // 첫번쨰 값이 poll 꺼내졌으므로 그 다음 값인 2를 출력 Stack 과 마차가지로
         // poll 은 다음 값 확인만 하고 변하는 건 없음
-        
-        
+
+       Thread t1 = new Thread(() -> {
+           System.out.println("THIS IS THREAD TEST CHECK");
+       }, "THIS IS THREAD NAME");
+
+       t1.start();
+
+
     }
 }
