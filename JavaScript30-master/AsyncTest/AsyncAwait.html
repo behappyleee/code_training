@@ -1,0 +1,117 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    // Callback 함수란 비동기 작업 이 완료 되면 실행이 되는 함수
+    
+    // 기본적으로 자바스크립트는 동기적으로 함수 호출을 사용
+    // JavaScript 엔진은 크게 2개의 영역 콜스택 / 힙으로 구성 되어 있음
+
+    // 콜 스택 (실행 컨텍스트 스택) -> 소스코드 평가 과정에서 생성 되는 실행 컨텍스트가 추가 / 제거 되는 스택 구조
+    // 실행 컨텍스트가 push / pop 되므로 실행 컨텍스트 스택이라고 함
+
+    // 자바스크립트 엔진은 작업을 실행 컨텍스트 단위로 나누고, 콜 스택으로 순차 실행한다
+    // 엔진은 항상 코드를 순차적으로 실행을 한다
+    
+    // 그래서 비동기 작업을 돕는 다른 장치가 필요하였고 이것이 이벤트 루프와 태스크 큐이다.
+    
+    // 이벤트 루프와 태스크 큐는 자바 스크립트 엔진에 있지 않고 런타임 (실행 환경) 인 브라우저 / NodeJS 에 내장 되어 있다
+
+    // 비동기 함수에 쿨백 함수/이벤트 핸들러가 일시적으로 대기하는 Task Queue 에서 대기 중이며 Call Stack 이 비어 있을 시 Event Loop 가 Task Queue 에서
+    // 대기 중인 작업 들을 Call Stack 에 밀어 넣어 줌
+    
+    // Call Stack 은 - LIFO / Task Queue - FIFO
+
+    // Axios 는 비동기 통신을 위하여 사용
+
+    // Async Await 사용 시  Promise 를 조금 더 편하게 사용이 가능
+
+
+    const axiosTest = () => {
+
+    }
+
+    // 함수 앞에 Async 를 붙일 시 무조거 Promise 를 Return 을 함, Promise 가 아닌 값을 반환하더라도
+    // 이행 상태의 Resolved Promise 로 값을 감싸서 이행 된 Promise 가 반환 되도록 함
+    async function asyncCheck() {
+        // return Promise.resolve('Lucky 77').reject('Reject 33');
+        return 'Test';
+    }
+
+    async function clickTest() {
+        console.log('arguments : ', arguments); // argument 함수 사용이 가능
+        
+        let asyncReturnCheck = asyncCheck();    // Promise 를 리턴
+        // await 키워드를 사용 시 함수에 async 키워드가 붙어 있어야 함
+        let awaitReturnCheck = await asyncCheck();  // Test 를 Return return 값을 바로 사용이 가능
+
+        // await 을 사용안 할 시 then 을 사용 (asyncCheck 는 Promise 를 return 을 하므로 then 으로 받아서 Promise 함수를 받아 줌)
+        // then 에는 callback 함수를 넘겨 줌
+        asyncCheck().then((res) => {
+            console.log('ASYNC CHECK DATA THEN RES : ' + JSON.stringify(res));
+        })
+
+        // asyncCheck().then(alert);   // alert callback 함수를 넘겨 줌
+
+        console.log('ASYNC RETURN CHECK : '  + asyncReturnCheck);   // Promise 함수 Return
+        console.log('AWAIT PROMISE RETURN : ', awaitReturnCheck);   // await 키워드 사용하여 값을 return
+
+    }
+
+    async function promiseCheck() {
+        
+        console.log('PROMISE 실행 !!  1');
+
+        let testNum = 7;
+
+        let setTimeCheck = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                testNum = 99;
+                resolve("PROMISE 완료 !", testNum = 12);
+            }, 1000);
+        });
+
+        console.log('PROMISE 실행 !!  2');
+        console.log('TEST NUM CHECK !!  1  '  + testNum);
+
+        let awaitFunc = await setTimeCheck;
+
+        console.log('TEST NUM CHECK !!  2  '  + testNum);
+        console.log('77777');
+
+        alert(awaitFunc);
+
+        console.log('AWAIT FUNC DATA : ', awaitFunc);
+        console.log('PROMISE 실행 !!  3');
+    }
+
+    function giveSendFunction() {
+        console.log('GIVE 1');
+        console.log('GIVE 2');
+        console.log('GIVE 3');
+    }
+
+    function functionTest() {
+        testSend(giveSendFunction);
+    }
+
+    function testSend(getFunc) {
+        getFunc();
+    }
+
+</script>
+
+<button onclick="axiosTest()">
+    Click Axios
+</button>
+
+<button onclick="clickTest()">
+    Click Test
+</button>
+
+<button onclick="promiseCheck()">
+    Promise Check
+</button>
+
+<button onclick="functionTest()">
+    Function Give
+</button>
+

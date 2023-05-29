@@ -1,0 +1,96 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    
+    function increaseNum(n, callbackFunc) {
+        let increaseNum = n + 1;
+        setTimeout(()=> {
+            callbackFunc(increaseNum);
+        }, 1000);
+    }
+    
+    // 만약 Async Await 을 사용을 하지 않았을 시 
+    // Callback 지옥에 빠져버릴 확률이 높음
+    function callbackHell() {
+        increaseNum(1, n => {
+           increaseNum(n, n => {
+                increaseNum(n , n => {
+                    increaseNum(n, n => {
+                        increaseNum(n, n => {
+                            console.log('TOTAL N : ' + n);
+                        })
+                    })
+                })    
+           })     
+        });
+    }
+
+    function returnFun(num, callbackFun) {
+        console.log('RETURN FUN DATA CHECK : ' + num);
+        
+        let testFun = () => {
+            console.log('THIS IS CALLBACK FUNCTION !!!!');
+        }
+
+        setTimeout(() => {
+            testFun();
+        }, 1000);
+    }
+
+    async function asyncAwait() {
+
+        console.log('is 1');
+
+        // let testFun = () => {
+        //     console.log('THIS IS CALLBACK FUNCTION !!!!');
+        // }
+
+        let setFun = await returnFun;
+
+        console.log('is 2');
+        console.log('LAST SET FUN : ' , setFun);
+    }
+
+    function promiseFunction() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(() => {
+                    console.log('RESOLVE TEST !!!!');
+                    return 'This is call back function test !!!!';
+                })
+                reject(() => {
+                    console.log('REJECT TEST !!!!!');
+                })
+            }, 1000);
+        })
+    }
+
+    async function callPromise() {
+
+        console.log('PROM TEST 1');
+
+        let promiseTest = await promiseFunction();
+
+        console.log('AFTER AWAIT FUNC TEST : ', promiseTest());
+
+        promiseTest.then((res) => {
+            res();
+            console.log('PROMISE THEN RES : ' + JSON.stringify(res));
+        })
+
+        console.log('PROM TEST 2');
+    
+    }
+
+</script>
+
+<button onclick="callbackHell()">
+    Get Async Num
+</button>
+
+<button onclick="asyncAwait()">
+    Async Await Check
+</button>
+
+<button onclick="callPromise()">
+   Call Promise  
+</button>
