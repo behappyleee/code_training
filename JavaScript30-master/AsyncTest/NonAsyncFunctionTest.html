@@ -1,0 +1,18 @@
+<script>
+
+    function callFunction() {
+        return 'This is return Function Check';
+    }
+
+    async function noneAsyncFunction() {
+        let funTest= await callFunction();
+
+        console.log('FUNC TEST CHECK : ' + funTest);
+    }
+
+
+</script>
+
+<button onclick="noneAsyncFunction()">
+    Understanding Async Await
+</button>
