@@ -1,0 +1,33 @@
+<script>
+    class PersonTEST {
+        constructor() {
+            this.name = '';
+            this.age  = '';
+        }
+        printLog() {
+            console.log('THIS IS PRINT LOG NAME : ' + this.name);
+        }
+    }
+
+    function changeObject() {
+        let person = new PersonTEST();
+
+        console.log('PERSON DATA TEST CHECK 1 : ' + JSON.stringify(person));
+
+        person.name = 'lee';
+
+        console.log('PERSON DATA TEST CHECK 2 : ' + JSON.stringify(person));
+        person.printLog();
+    }
+
+    
+
+
+
+</script>
+
+
+
+<button onclick="changeObject()">
+    Change Object !    
+</button>

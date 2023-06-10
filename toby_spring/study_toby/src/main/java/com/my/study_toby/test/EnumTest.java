@@ -3,13 +3,16 @@ package com.my.study_toby.test;
 import java.util.Arrays;
 
 enum Site {
-    NAVER("naver"),
-    DAUM("daum"),
-    NATE("nate");
+    NAVER("naver", 1),
+    DAUM("daum", 2),
+    NATE("nate",3);
 
     private String siteName;
-    Site(String siteName) {
+    private int testNum;
+
+    Site(String siteName, int test) {
         this.siteName = siteName;
+        this.testNum = test;
     }
 
     String getSiteName() {
